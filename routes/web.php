@@ -15,11 +15,9 @@ Route::get('/media-file/{path}', function ($path) {
     return \Illuminate\Support\Facades\Storage::disk('public')->response($path);
 })->where('path', '.*')->name('media.file');
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canRegister' => Features::enabled(Features::registration()),
-    ]);
-})->name('home');
+// Public page routes
+Route::get('/', [\App\Http\Controllers\PageController::class, 'showHomepage'])->name('home');
+Route::get('/{slug}', [\App\Http\Controllers\PageController::class, 'show'])->name('page.show');
 
 Route::get('dashboard', function () {
     return Inertia::render('Admin/Dashboard');

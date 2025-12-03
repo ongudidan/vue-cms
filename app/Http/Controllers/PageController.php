@@ -102,4 +102,75 @@ class PageController extends Controller
         return redirect()->route('admin.pages.index')
             ->with('success', 'Page deleted successfully.');
     }
+
+    /**
+     * Display the homepage.
+     */
+    public function showHomepage()
+    {
+        $page = Page::where('is_homepage', true)
+            ->where('published', true)
+            ->first();
+
+        if (!$page) {
+            // Fallback to welcome page if no homepage is set
+            return Inertia::render('Welcome', [
+                'canRegister' => \Laravel\Fortify\Features::enabled(\Laravel\Fortify\Features::registration()),
+            ]);
+        }
+
+        return $this->renderPage($page);
+    }
+
+    /**
+     * Display the specified page on the frontend.
+     */
+    public function show($slug)
+    {
+        $page = Page::where('slug', $slug)
+            ->where('published', true)
+            ->firstOrFail();
+
+        return $this->renderPage($page);
+    }
+
+    /**
+     * Render a page with theme layout.
+     */
+    protected function renderPage(Page $page)
+    {
+        // Get active theme
+        $theme = \App\Models\Theme::where('is_active', true)->first();
+
+        // Determine which layout to use
+        $layout = 'layouts.app'; // Default Laravel layout
+
+        if ($theme) {
+            // Check if theme has a custom layout
+            $themeLayoutPath = resource_path("js/themes/{$theme->slug}/layout.blade.php");
+            if (file_exists($themeLayoutPath)) {
+                $layout = "themes.{$theme->slug}::layout";
+            }
+        }
+
+        // Render sections
+        $renderedSections = [];
+        if (!empty($page->content)) {
+            foreach ($page->content as $section) {
+                if ($theme) {
+                    $templatePath = $theme->getSectionTemplatePath($section['type']);
+                    if ($templatePath) {
+                        $renderedSections[] = view($templatePath, ['section' => $section])->render();
+                    }
+                }
+            }
+        }
+
+        return view('pages.show', [
+            'page' => $page,
+            'sections' => $renderedSections,
+            'layout' => $layout,
+            'theme' => $theme,
+        ]);
+    }
 }

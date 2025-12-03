@@ -1,33 +1,37 @@
-{{-- Hero Section - Simple and Clean --}}
+
 <section class="hero-section relative overflow-hidden bg-gradient-to-br from-blue-600 to-purple-600 py-20">
    <div class="container mx-auto px-4">
       <div class="mx-auto max-w-4xl text-center text-white">
-         @if(!empty($section['data']['subtitle']))
+         <?php if(!empty($section['data']['subtitle'])): ?>
          <p class="mb-4 text-lg opacity-90" data-aos="fade-up">
-            {{ $section['data']['subtitle'] }}
-         </p>
-         @endif
+            <?php echo e($section['data']['subtitle']); ?>
 
-         @if(!empty($section['data']['title']))
+         </p>
+         <?php endif; ?>
+
+         <?php if(!empty($section['data']['title'])): ?>
          <h1 class="mb-6 text-5xl font-bold leading-tight md:text-6xl" data-aos="fade-up" data-aos-delay="200">
-            {{ $section['data']['title'] }}
+            <?php echo e($section['data']['title']); ?>
+
          </h1>
-         @endif
+         <?php endif; ?>
 
-         @if(!empty($section['data']['description']))
+         <?php if(!empty($section['data']['description'])): ?>
          <p class="mb-8 text-xl opacity-90" data-aos="fade-up" data-aos-delay="400">
-            {{ $section['data']['description'] }}
-         </p>
-         @endif
+            <?php echo e($section['data']['description']); ?>
 
-         @if(!empty($section['data']['button_text']))
+         </p>
+         <?php endif; ?>
+
+         <?php if(!empty($section['data']['button_text'])): ?>
          <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="600">
-            <a href="{{ $section['data']['button_url'] ?? '#' }}"
+            <a href="<?php echo e($section['data']['button_url'] ?? '#'); ?>"
                class="inline-flex items-center rounded-lg bg-white px-8 py-3 font-semibold text-blue-600 shadow-lg transition hover:bg-gray-100">
-               {{ $section['data']['button_text'] }}
+               <?php echo e($section['data']['button_text']); ?>
+
             </a>
          </div>
-         @endif
+         <?php endif; ?>
       </div>
    </div>
-</section>
+</section><?php /**PATH C:\Users\Dan Ong'udi\Herd\vue-cms\resources\js/themes/default/sections/hero-section.blade.php ENDPATH**/ ?>

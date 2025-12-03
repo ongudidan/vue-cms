@@ -55,16 +55,26 @@ class ThemeService
      */
     public function registerTheme(array $themeData, string $path): Theme
     {
+        // Check if theme already exists
+        $existingTheme = Theme::where('slug', $themeData['slug'])->first();
+        
+        $data = [
+            'name' => $themeData['name'] ?? $themeData['slug'],
+            'path' => $path,
+            'description' => $themeData['description'] ?? null,
+            'version' => $themeData['version'] ?? '1.0.0',
+            'author' => $themeData['author'] ?? null,
+            'config' => $themeData,
+        ];
+        
+        // Only set is_active to false for NEW themes
+        if (!$existingTheme) {
+            $data['is_active'] = false;
+        }
+        
         return Theme::updateOrCreate(
             ['slug' => $themeData['slug']],
-            [
-                'name' => $themeData['name'] ?? $themeData['slug'],
-                'path' => $path,
-                'description' => $themeData['description'] ?? null,
-                'version' => $themeData['version'] ?? '1.0.0',
-                'author' => $themeData['author'] ?? null,
-                'config' => $themeData,
-            ]
+            $data
         );
     }
 

@@ -129,7 +129,18 @@ class Theme extends Model
 
         foreach ($sections as $section) {
             if ($section['type'] === $sectionType) {
-                return $section['bladeTemplate'] ?? '';
+                // Convert dot notation to namespace syntax
+                // From: themes.default.sections.hero-section
+                // To: themes.default::sections.hero-section
+                $bladeTemplate = $section['bladeTemplate'] ?? '';
+                if ($bladeTemplate && str_starts_with($bladeTemplate, 'themes.')) {
+                    // Replace first dot after 'themes.{slug}' with '::'
+                    $parts = explode('.', $bladeTemplate, 3);
+                    if (count($parts) >= 3) {
+                        return "themes.{$parts[1]}::{$parts[2]}";
+                    }
+                }
+                return $bladeTemplate;
             }
         }
 

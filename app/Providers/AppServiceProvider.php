@@ -19,7 +19,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Register theme Blade views
-        $this->loadViewsFrom(resource_path('js/themes'), 'themes');
+        // Register theme Blade views - register each theme individually
+        $themesPath = resource_path('js/themes');
+
+        if (is_dir($themesPath)) {
+            $themeDirs = glob($themesPath . '/*', GLOB_ONLYDIR);
+
+            foreach ($themeDirs as $themeDir) {
+                $themeName = basename($themeDir);
+                $this->loadViewsFrom($themeDir, "themes.{$themeName}");
+            }
+        }
     }
 }

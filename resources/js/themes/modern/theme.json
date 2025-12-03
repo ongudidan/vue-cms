@@ -1,0 +1,79 @@
+{
+    "name": "Modern Theme",
+    "slug": "modern",
+    "version": "1.0.0",
+    "author": "Vue CMS",
+    "description": "A modern, professional theme with comprehensive sections for business websites",
+    "sections": [
+        {
+            "type": "hero-fullscreen",
+            "label": "Hero Fullscreen",
+            "icon": "🎯",
+            "bladeTemplate": "themes.modern.sections.hero-fullscreen",
+            "vueForm": "modern/forms/HeroFullscreenForm.vue"
+        },
+        {
+            "type": "hero-minimal",
+            "label": "Hero Minimal",
+            "icon": "✨",
+            "bladeTemplate": "themes.modern.sections.hero-minimal",
+            "vueForm": "modern/forms/HeroMinimalForm.vue"
+        },
+        {
+            "type": "page-banner",
+            "label": "Page Banner",
+            "icon": "📄",
+            "bladeTemplate": "themes.modern.sections.page-banner",
+            "vueForm": "modern/forms/PageBannerForm.vue"
+        },
+        {
+            "type": "page-banner-breadcrumb",
+            "label": "Page Banner with Breadcrumb",
+            "icon": "🗂️",
+            "bladeTemplate": "themes.modern.sections.page-banner-breadcrumb",
+            "vueForm": "modern/forms/PageBannerBreadcrumbForm.vue"
+        },
+        {
+            "type": "features-grid",
+            "label": "Features Grid",
+            "icon": "⭐",
+            "bladeTemplate": "themes.modern.sections.features-grid",
+            "vueForm": "modern/forms/FeaturesGridForm.vue"
+        },
+        {
+            "type": "cta-section",
+            "label": "Call to Action",
+            "icon": "📣",
+            "bladeTemplate": "themes.modern.sections.cta-section",
+            "vueForm": "modern/forms/CtaSectionForm.vue"
+        },
+        {
+            "type": "testimonials",
+            "label": "Testimonials",
+            "icon": "💬",
+            "bladeTemplate": "themes.modern.sections.testimonials",
+            "vueForm": "modern/forms/TestimonialsForm.vue"
+        },
+        {
+            "type": "pricing-table",
+            "label": "Pricing Table",
+            "icon": "💰",
+            "bladeTemplate": "themes.modern.sections.pricing-table",
+            "vueForm": "modern/forms/PricingTableForm.vue"
+        },
+        {
+            "type": "team-grid",
+            "label": "Team Grid",
+            "icon": "👥",
+            "bladeTemplate": "themes.modern.sections.team-grid",
+            "vueForm": "modern/forms/TeamGridForm.vue"
+        },
+        {
+            "type": "faq-accordion",
+            "label": "FAQ Accordion",
+            "icon": "❓",
+            "bladeTemplate": "themes.modern.sections.faq-accordion",
+            "vueForm": "modern/forms/FaqAccordionForm.vue"
+        }
+    ]
+}

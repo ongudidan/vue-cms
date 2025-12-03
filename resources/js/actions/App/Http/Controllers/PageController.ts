@@ -1,5 +1,180 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
+* @see \App\Http\Controllers\PageController::showHomepage
+ * @see app/Http/Controllers/PageController.php:109
+ * @route '/'
+ */
+export const showHomepage = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: showHomepage.url(options),
+    method: 'get',
+})
+
+showHomepage.definition = {
+    methods: ["get","head"],
+    url: '/',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\PageController::showHomepage
+ * @see app/Http/Controllers/PageController.php:109
+ * @route '/'
+ */
+showHomepage.url = (options?: RouteQueryOptions) => {
+    return showHomepage.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\PageController::showHomepage
+ * @see app/Http/Controllers/PageController.php:109
+ * @route '/'
+ */
+showHomepage.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: showHomepage.url(options),
+    method: 'get',
+})
+/**
+* @see \App\Http\Controllers\PageController::showHomepage
+ * @see app/Http/Controllers/PageController.php:109
+ * @route '/'
+ */
+showHomepage.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: showHomepage.url(options),
+    method: 'head',
+})
+
+    /**
+* @see \App\Http\Controllers\PageController::showHomepage
+ * @see app/Http/Controllers/PageController.php:109
+ * @route '/'
+ */
+    const showHomepageForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: showHomepage.url(options),
+        method: 'get',
+    })
+
+            /**
+* @see \App\Http\Controllers\PageController::showHomepage
+ * @see app/Http/Controllers/PageController.php:109
+ * @route '/'
+ */
+        showHomepageForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: showHomepage.url(options),
+            method: 'get',
+        })
+            /**
+* @see \App\Http\Controllers\PageController::showHomepage
+ * @see app/Http/Controllers/PageController.php:109
+ * @route '/'
+ */
+        showHomepageForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: showHomepage.url({
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    showHomepage.form = showHomepageForm
+/**
+* @see \App\Http\Controllers\PageController::show
+ * @see app/Http/Controllers/PageController.php:128
+ * @route '/{slug}'
+ */
+export const show = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: show.url(args, options),
+    method: 'get',
+})
+
+show.definition = {
+    methods: ["get","head"],
+    url: '/{slug}',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\PageController::show
+ * @see app/Http/Controllers/PageController.php:128
+ * @route '/{slug}'
+ */
+show.url = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { slug: args }
+    }
+
+    
+    if (Array.isArray(args)) {
+        args = {
+                    slug: args[0],
+                }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+                        slug: args.slug,
+                }
+
+    return show.definition.url
+            .replace('{slug}', parsedArgs.slug.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\PageController::show
+ * @see app/Http/Controllers/PageController.php:128
+ * @route '/{slug}'
+ */
+show.get = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: show.url(args, options),
+    method: 'get',
+})
+/**
+* @see \App\Http\Controllers\PageController::show
+ * @see app/Http/Controllers/PageController.php:128
+ * @route '/{slug}'
+ */
+show.head = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: show.url(args, options),
+    method: 'head',
+})
+
+    /**
+* @see \App\Http\Controllers\PageController::show
+ * @see app/Http/Controllers/PageController.php:128
+ * @route '/{slug}'
+ */
+    const showForm = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: show.url(args, options),
+        method: 'get',
+    })
+
+            /**
+* @see \App\Http\Controllers\PageController::show
+ * @see app/Http/Controllers/PageController.php:128
+ * @route '/{slug}'
+ */
+        showForm.get = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: show.url(args, options),
+            method: 'get',
+        })
+            /**
+* @see \App\Http\Controllers\PageController::show
+ * @see app/Http/Controllers/PageController.php:128
+ * @route '/{slug}'
+ */
+        showForm.head = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: show.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    show.form = showForm
+/**
 * @see \App\Http\Controllers\PageController::index
  * @see app/Http/Controllers/PageController.php:15
  * @route '/admin/pages'
@@ -310,6 +485,6 @@ destroy.delete = (args: { page: number | { id: number } } | [page: number | { id
         })
     
     destroy.form = destroyForm
-const PageController = { index, store, update, destroy }
+const PageController = { showHomepage, show, index, store, update, destroy }
 
 export default PageController

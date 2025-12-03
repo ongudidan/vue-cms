@@ -10,7 +10,7 @@ import menus from './menus'
 import pages from './pages'
 import themes from './themes'
 /**
- * @see routes/web.php:28
+ * @see routes/web.php:26
  * @route '/admin/components'
  */
 export const components = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -24,7 +24,7 @@ components.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see routes/web.php:28
+ * @see routes/web.php:26
  * @route '/admin/components'
  */
 components.url = (options?: RouteQueryOptions) => {
@@ -32,7 +32,7 @@ components.url = (options?: RouteQueryOptions) => {
 }
 
 /**
- * @see routes/web.php:28
+ * @see routes/web.php:26
  * @route '/admin/components'
  */
 components.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -40,7 +40,7 @@ components.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     method: 'get',
 })
 /**
- * @see routes/web.php:28
+ * @see routes/web.php:26
  * @route '/admin/components'
  */
 components.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -49,7 +49,7 @@ components.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
     /**
- * @see routes/web.php:28
+ * @see routes/web.php:26
  * @route '/admin/components'
  */
     const componentsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -58,7 +58,7 @@ components.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     })
 
             /**
- * @see routes/web.php:28
+ * @see routes/web.php:26
  * @route '/admin/components'
  */
         componentsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -66,7 +66,7 @@ components.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
             method: 'get',
         })
             /**
- * @see routes/web.php:28
+ * @see routes/web.php:26
  * @route '/admin/components'
  */
         componentsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
