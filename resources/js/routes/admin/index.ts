@@ -8,6 +8,7 @@ import partners from './partners'
 import clients from './clients'
 import menus from './menus'
 import pages from './pages'
+import themes from './themes'
 /**
  * @see routes/web.php:28
  * @route '/admin/components'
@@ -90,6 +91,7 @@ partners: Object.assign(partners, partners),
 clients: Object.assign(clients, clients),
 menus: Object.assign(menus, menus),
 pages: Object.assign(pages, pages),
+themes: Object.assign(themes, themes),
 }
 
 export default admin

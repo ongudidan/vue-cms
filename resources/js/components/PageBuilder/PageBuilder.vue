@@ -1,11 +1,8 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, shallowRef } from 'vue';
 import draggable from 'vuedraggable';
-import { GripVertical, Edit, Trash2, ChevronDown, ChevronUp } from 'lucide-vue-next';
-import HeroSection from './Sections/HeroSection.vue';
-import TextSection from './Sections/TextSection.vue';
-import ImageSection from './Sections/ImageSection.vue';
-import CTASection from './Sections/CTASection.vue';
+import { GripVertical, Edit, Trash2, ChevronDown, ChevronUp, Loader2 } from 'lucide-vue-next';
+import axios from 'axios';
 
 const props = defineProps({
     content: {
@@ -19,19 +16,56 @@ const emit = defineEmits(['update:content']);
 const sections = ref([...props.content]);
 const drag = ref(false);
 const editingSection = ref(null);
+const sectionTypes = ref([]);
+const loadingSections = ref(true);
+const sectionComponents = shallowRef({});
 
-// Available section types
-const sectionTypes = [
-    { type: 'hero', label: 'Hero Banner', icon: '🎯', component: HeroSection },
-    { type: 'text', label: 'Text Content', icon: '📝', component: TextSection },
-    { type: 'image', label: 'Image', icon: '🖼️', component: ImageSection },
-    { type: 'cta', label: 'Call to Action', icon: '🎬', component: CTASection },
-];
+// Eagerly import all theme form components using Vite's glob import
+const formModules = import.meta.glob('@/themes/*/forms/*.vue');
+
+// Fetch available sections from active theme
+const fetchThemeSections = async () => {
+    try {
+        loadingSections.value = true;
+        const response = await axios.get('/api/themes/active/sections');
+        const themeSections = response.data.sections || [];
+
+        // Load Vue form components using glob imports
+        for (const section of themeSections) {
+            if (section.vueForm) {
+                try {
+                    // Construct the full path for the glob import
+                    const componentPath = `@/themes/${section.vueForm}`;
+
+                    // Find matching module from glob imports
+                    const moduleKey = Object.keys(formModules).find(key =>
+                        key.includes(section.vueForm)
+                    );
+
+                    if (moduleKey) {
+                        const module = await formModules[moduleKey]();
+                        sectionComponents.value[section.type] = module.default;
+                    } else {
+                        console.warn(`Component not found in glob imports for ${section.type}: ${componentPath}`);
+                    }
+                } catch (error) {
+                    console.error(`Failed to load component for ${section.type}:`, error);
+                }
+            }
+        }
+
+        sectionTypes.value = themeSections;
+    } catch (error) {
+        console.error('Failed to fetch theme sections:', error);
+        sectionTypes.value = [];
+    } finally {
+        loadingSections.value = false;
+    }
+};
 
 // Get component for section type
 const getSectionComponent = (type) => {
-    const sectionType = sectionTypes.find(s => s.type === type);
-    return sectionType?.component || TextSection;
+    return sectionComponents.value[type] || null;
 };
 
 // Add new section
@@ -40,44 +74,11 @@ const addSection = (type) => {
         id: `section-${Date.now()}`,
         type: type,
         order: sections.value.length,
-        data: getDefaultData(type),
+        data: {},
     };
 
     sections.value.push(newSection);
     updateContent();
-};
-
-// Get default data for section type
-const getDefaultData = (type) => {
-    const defaults = {
-        hero: {
-            title: 'Hero Title',
-            subtitle: 'Hero subtitle text',
-            buttonText: 'Learn More',
-            buttonLink: '#',
-            backgroundImage: '',
-            settings: { alignment: 'center', padding: 'large' },
-        },
-        text: {
-            content: '<p>Enter your text content here...</p>',
-            settings: { alignment: 'left', padding: 'medium' },
-        },
-        image: {
-            url: '',
-            alt: '',
-            caption: '',
-            settings: { alignment: 'center', padding: 'medium' },
-        },
-        cta: {
-            title: 'Ready to get started?',
-            description: 'Join thousands of satisfied customers',
-            buttonText: 'Get Started',
-            buttonLink: '#',
-            settings: { alignment: 'center', padding: 'large', background: '#f3f4f6' },
-        },
-    };
-
-    return defaults[type] || {};
 };
 
 // Remove section
@@ -134,6 +135,11 @@ const onDragEnd = () => {
 const updateContent = () => {
     emit('update:content', sections.value);
 };
+
+// Load theme sections on mount
+onMounted(() => {
+    fetchThemeSections();
+});
 </script>
 
 <template>
@@ -142,13 +148,28 @@ const updateContent = () => {
         <div class="w-64 flex-shrink-0 space-y-3">
             <h3 class="text-sm font-semibold text-foreground mb-3">Available Sections</h3>
             <p class="text-xs text-muted-foreground mb-4">Click to add to your page</p>
-            <div class="space-y-2">
+
+            <!-- Loading State -->
+            <div v-if="loadingSections" class="flex items-center justify-center py-8">
+                <Loader2 class="h-6 w-6 animate-spin text-primary" />
+            </div>
+
+            <!-- Section Types -->
+            <div v-else class="space-y-2">
                 <button v-for="sectionType in sectionTypes" :key="sectionType.type"
                     @click="addSection(sectionType.type)" type="button"
                     class="w-full flex items-center gap-3 rounded-lg border border-sidebar-border bg-card p-3 text-left transition-all hover:border-primary hover:shadow-md hover:scale-105">
                     <span class="text-2xl">{{ sectionType.icon }}</span>
                     <span class="text-sm font-medium text-foreground">{{ sectionType.label }}</span>
                 </button>
+
+                <!-- No Sections Available -->
+                <div v-if="sectionTypes.length === 0"
+                    class="rounded-lg border border-dashed border-sidebar-border bg-muted/30 p-4 text-center">
+                    <p class="text-xs text-muted-foreground">
+                        No theme is active. Please activate a theme first.
+                    </p>
+                </div>
             </div>
         </div>
 
@@ -205,9 +226,12 @@ const updateContent = () => {
 
                         <!-- Section Content -->
                         <div class="p-4">
-                            <component :is="getSectionComponent(section.type)" :data="section.data"
-                                :editing="editingSection === index" @save="(data) => saveSection(index, data)"
-                                @cancel="cancelEdit" />
+                            <component v-if="getSectionComponent(section.type)" :is="getSectionComponent(section.type)"
+                                :data="section.data" :editing="editingSection === index"
+                                @save="(data) => saveSection(index, data)" @cancel="cancelEdit" />
+                            <div v-else class="text-sm text-muted-foreground">
+                                Component not found for {{ section.type }}
+                            </div>
                         </div>
                     </div>
                 </template>

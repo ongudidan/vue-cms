@@ -25,6 +25,24 @@ class Theme extends Model
     ];
 
     /**
+     * Boot the model.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Ensure only one theme can be active at a time
+        static::saving(function ($theme) {
+            if ($theme->is_active && $theme->isDirty('is_active')) {
+                // Deactivate all other themes
+                static::where('id', '!=', $theme->id)
+                    ->where('is_active', true)
+                    ->update(['is_active' => false]);
+            }
+        });
+    }
+
+    /**
      * Get the pages that use this theme.
      */
     public function pages(): HasMany
@@ -69,6 +87,24 @@ class Theme extends Model
     }
 
     /**
+     * Get sections with full metadata.
+     */
+    public function getSectionsWithMetadata(): array
+    {
+        $sections = $this->getSections();
+
+        return array_map(function ($section) {
+            return [
+                'type' => $section['type'] ?? '',
+                'label' => $section['label'] ?? '',
+                'icon' => $section['icon'] ?? '📄',
+                'bladeTemplate' => $section['bladeTemplate'] ?? '',
+                'vueForm' => $section['vueForm'] ?? '',
+            ];
+        }, $sections);
+    }
+
+    /**
      * Get the theme's view path.
      */
     public function getViewPath(string $view): string
@@ -82,5 +118,21 @@ class Theme extends Model
     public function getAssetPath(string $asset): string
     {
         return "themes/{$this->slug}/assets/{$asset}";
+    }
+
+    /**
+     * Get the theme's section blade template path.
+     */
+    public function getSectionTemplatePath(string $sectionType): string
+    {
+        $sections = $this->getSections();
+
+        foreach ($sections as $section) {
+            if ($section['type'] === $sectionType) {
+                return $section['bladeTemplate'] ?? '';
+            }
+        }
+
+        return '';
     }
 }

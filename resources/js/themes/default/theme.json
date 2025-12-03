@@ -1,0 +1,149 @@
+{
+    "name": "Default Theme",
+    "slug": "default",
+    "version": "1.0.0",
+    "author": "Dan Ong'udi",
+    "description": "Default theme with all available sections for building pages",
+    "sections": [
+        {
+            "type": "hero-section",
+            "label": "Hero Banner",
+            "icon": "🎯",
+            "bladeTemplate": "themes.default.sections.hero-section",
+            "vueForm": "default/forms/HeroSectionForm.vue"
+        },
+        {
+            "type": "section-with-services",
+            "label": "Services Section",
+            "icon": "💼",
+            "bladeTemplate": "themes.default.sections.section-with-services",
+            "vueForm": "default/forms/SectionWithServicesForm.vue"
+        },
+        {
+            "type": "section-with-blogs",
+            "label": "Blogs Section",
+            "icon": "📝",
+            "bladeTemplate": "themes.default.sections.section-with-blogs",
+            "vueForm": "default/forms/SectionWithBlogsForm.vue"
+        },
+        {
+            "type": "section-with-projects",
+            "label": "Projects Section",
+            "icon": "🏗️",
+            "bladeTemplate": "themes.default.sections.section-with-projects",
+            "vueForm": "default/forms/SectionWithProjectsForm.vue"
+        },
+        {
+            "type": "section-with-testimonials",
+            "label": "Testimonials",
+            "icon": "💬",
+            "bladeTemplate": "themes.default.sections.section-with-testimonials",
+            "vueForm": "default/forms/SectionWithTestimonialsForm.vue"
+        },
+        {
+            "type": "section-with-clients",
+            "label": "Clients Section",
+            "icon": "🤝",
+            "bladeTemplate": "themes.default.sections.section-with-clients",
+            "vueForm": "default/forms/SectionWithClientsForm.vue"
+        },
+        {
+            "type": "section-with-partners",
+            "label": "Partners Section",
+            "icon": "🔗",
+            "bladeTemplate": "themes.default.sections.section-with-partners",
+            "vueForm": "default/forms/SectionWithPartnersForm.vue"
+        },
+        {
+            "type": "section-with-contact-form",
+            "label": "Contact Form",
+            "icon": "📧",
+            "bladeTemplate": "themes.default.sections.section-with-contact-form",
+            "vueForm": "default/forms/SectionWithContactFormForm.vue"
+        },
+        {
+            "type": "section-with-faqs",
+            "label": "FAQs Section",
+            "icon": "❓",
+            "bladeTemplate": "themes.default.sections.section-with-faqs",
+            "vueForm": "default/forms/SectionWithFaqsForm.vue"
+        },
+        {
+            "type": "section-with-gallery",
+            "label": "Gallery",
+            "icon": "🖼️",
+            "bladeTemplate": "themes.default.sections.section-with-gallery",
+            "vueForm": "default/forms/SectionWithGalleryForm.vue"
+        },
+        {
+            "type": "section-with-pricing-plans",
+            "label": "Pricing Plans",
+            "icon": "💰",
+            "bladeTemplate": "themes.default.sections.section-with-pricing-plans",
+            "vueForm": "default/forms/SectionWithPricingPlansForm.vue"
+        },
+        {
+            "type": "section-with-video",
+            "label": "Video Section",
+            "icon": "🎥",
+            "bladeTemplate": "themes.default.sections.section-with-video",
+            "vueForm": "default/forms/SectionWithVideoForm.vue"
+        },
+        {
+            "type": "section-with-image",
+            "label": "Image Section",
+            "icon": "🌄",
+            "bladeTemplate": "themes.default.sections.section-with-image",
+            "vueForm": "default/forms/SectionWithImageForm.vue"
+        },
+        {
+            "type": "section-without-image",
+            "label": "Text Only Section",
+            "icon": "📄",
+            "bladeTemplate": "themes.default.sections.section-without-image",
+            "vueForm": "default/forms/SectionWithoutImageForm.vue"
+        },
+        {
+            "type": "section-with-cards",
+            "label": "Cards Section",
+            "icon": "🃏",
+            "bladeTemplate": "themes.default.sections.section-with-cards",
+            "vueForm": "default/forms/SectionWithCardsForm.vue"
+        },
+        {
+            "type": "section-with-icon-box",
+            "label": "Icon Box Section",
+            "icon": "📦",
+            "bladeTemplate": "themes.default.sections.section-with-icon-box",
+            "vueForm": "default/forms/SectionWithIconBoxForm.vue"
+        },
+        {
+            "type": "section-with-board-members",
+            "label": "Board Members",
+            "icon": "👥",
+            "bladeTemplate": "themes.default.sections.section-with-board-members",
+            "vueForm": "default/forms/SectionWithBoardMembersForm.vue"
+        },
+        {
+            "type": "section-with-contact-cards",
+            "label": "Contact Cards",
+            "icon": "📇",
+            "bladeTemplate": "themes.default.sections.section-with-contact-cards",
+            "vueForm": "default/forms/SectionWithContactCardsForm.vue"
+        },
+        {
+            "type": "section-with-map",
+            "label": "Map Section",
+            "icon": "🗺️",
+            "bladeTemplate": "themes.default.sections.section-with-map",
+            "vueForm": "default/forms/SectionWithMapForm.vue"
+        },
+        {
+            "type": "why-us-section",
+            "label": "Why Us Section",
+            "icon": "⭐",
+            "bladeTemplate": "themes.default.sections.why-us-section",
+            "vueForm": "default/forms/WhyUsSectionForm.vue"
+        }
+    ]
+}

@@ -7,6 +7,7 @@ import PartnerController from './PartnerController'
 import ClientController from './ClientController'
 import MenuController from './MenuController'
 import PageController from './PageController'
+import ThemeController from './ThemeController'
 import Settings from './Settings'
 const Controllers = {
     ServiceController: Object.assign(ServiceController, ServiceController),
@@ -18,6 +19,7 @@ PartnerController: Object.assign(PartnerController, PartnerController),
 ClientController: Object.assign(ClientController, ClientController),
 MenuController: Object.assign(MenuController, MenuController),
 PageController: Object.assign(PageController, PageController),
+ThemeController: Object.assign(ThemeController, ThemeController),
 Settings: Object.assign(Settings, Settings),
 }
 

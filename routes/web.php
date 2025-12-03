@@ -96,6 +96,17 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::post('/pages', [\App\Http\Controllers\PageController::class, 'store'])->name('admin.pages.store');
     Route::put('/pages/{page}', [\App\Http\Controllers\PageController::class, 'update'])->name('admin.pages.update');
     Route::delete('/pages/{page}', [\App\Http\Controllers\PageController::class, 'destroy'])->name('admin.pages.destroy');
+
+    // Themes routes
+    Route::get('/themes', [\App\Http\Controllers\ThemeController::class, 'index'])->name('admin.themes.index');
+    Route::post('/themes/{id}/activate', [\App\Http\Controllers\ThemeController::class, 'activate'])->name('admin.themes.activate');
+    Route::post('/themes/{id}/deactivate', [\App\Http\Controllers\ThemeController::class, 'deactivate'])->name('admin.themes.deactivate');
+    Route::post('/themes/sync', [\App\Http\Controllers\ThemeController::class, 'sync'])->name('admin.themes.sync');
+});
+
+// API routes for themes
+Route::middleware(['auth', 'verified'])->prefix('api')->group(function () {
+    Route::get('/themes/active/sections', [\App\Http\Controllers\ThemeController::class, 'getActiveSections'])->name('api.themes.active.sections');
 });
 
 

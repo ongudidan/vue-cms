@@ -38,6 +38,11 @@ const mainNavItems: NavItem[] = [
         href: '/admin/pages',
         icon: FileText,
     },
+    {
+        title: 'Themes',
+        href: '/admin/themes',
+        icon: BookOpen,
+    },
 ];
 
 const footerNavItems: NavItem[] = [
