@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Register theme Blade views
+        $this->loadViewsFrom(resource_path('js/themes'), 'themes');
     }
 }

@@ -29,21 +29,21 @@ Themes in this CMS define the available page sections that content editors can u
 - **Assets**: CSS, JavaScript, images, and fonts
 - **Configuration**: `theme.json` defining sections and metadata
 
+**All theme files are stored in one location**: `resources/js/themes/your-theme/`
+
 ---
 
 ## Theme Architecture
 
-### Split Directory Structure
+### Unified Directory Structure
 
-Due to Vite's requirements, themes use a split directory structure:
+All theme files are now in a single location for better organization and portability:
 
 ```
-resources/js/themes/your-theme/     # Vue components (for Vite)
+resources/js/themes/your-theme/
 ├── theme.json                      # Theme configuration
-└── forms/                          # Vue form components
-    └── YourSectionForm.vue
-
-themes/your-theme/                  # Backend files
+├── forms/                          # Vue form components
+│   └── YourSectionForm.vue
 ├── sections/                       # Blade templates
 │   └── your-section.blade.php
 └── assets/                         # CSS, JS, images, fonts
@@ -53,9 +53,11 @@ themes/your-theme/                  # Backend files
     └── fonts/
 ```
 
-**Why Split?**
-- Vite requires Vue components to be in `resources/js/` for dynamic imports
-- Blade templates and assets don't need Vite processing
+**Benefits:**
+- ✅ **Portable**: Entire theme in one directory
+- ✅ **Organized**: No scattered files across project
+- ✅ **Easy to share**: Zip one folder to distribute theme
+- ✅ **Simpler**: One location to manage everything
 
 ---
 
@@ -64,12 +66,8 @@ themes/your-theme/                  # Backend files
 ### Step 1: Create Directory Structure
 
 ```bash
-# Create Vue components directory
-mkdir -p resources/js/themes/my-theme/forms
-
-# Create backend directory
-mkdir -p themes/my-theme/sections
-mkdir -p themes/my-theme/assets/{css,js,images,fonts}
+# Create theme directory with all subdirectories
+mkdir -p resources/js/themes/my-theme/{forms,sections,assets/{css,js,images,fonts}}
 ```
 
 ### Step 2: Create theme.json
@@ -181,7 +179,7 @@ const save = () => emit('save', formData.value);
 
 ### Step 4: Create a Blade Template
 
-Create `themes/my-theme/sections/hero-banner.blade.php`:
+Create `resources/js/themes/my-theme/sections/hero-banner.blade.php`:
 
 ```blade
 <section class="hero-banner py-20 bg-gradient-to-r from-blue-600 to-purple-600">
@@ -225,20 +223,18 @@ Create `themes/my-theme/sections/hero-banner.blade.php`:
 
 ```
 resources/js/themes/my-theme/
-├── theme.json
-└── forms/
-    ├── HeroBannerForm.vue
-    ├── FeaturesForm.vue
-    ├── TestimonialsForm.vue
-    └── ContactForm.vue
-
-themes/my-theme/
-├── sections/
+├── theme.json                      # Theme metadata
+├── forms/                          # Vue form components
+│   ├── HeroBannerForm.vue
+│   ├── FeaturesForm.vue
+│   ├── TestimonialsForm.vue
+│   └── ContactForm.vue
+├── sections/                       # Blade templates
 │   ├── hero-banner.blade.php
 │   ├── features.blade.php
 │   ├── testimonials.blade.php
 │   └── contact.blade.php
-└── assets/
+└── assets/                         # Theme assets
     ├── css/
     │   └── theme.css
     ├── js/
@@ -249,6 +245,12 @@ themes/my-theme/
     └── fonts/
         └── custom-font.woff2
 ```
+
+**File Locations:**
+- **theme.json**: `resources/js/themes/my-theme/theme.json`
+- **Vue Forms**: `resources/js/themes/my-theme/forms/*.vue`
+- **Blade Templates**: `resources/js/themes/my-theme/sections/*.blade.php`
+- **Assets**: `resources/js/themes/my-theme/assets/*`
 
 ---
 
@@ -457,101 +459,6 @@ const save = () => {
 </div>
 ```
 
-### Advanced Example: Features Section
-
-```vue
-<script setup>
-import { ref, watch } from 'vue';
-
-const props = defineProps({
-    data: { type: Object, default: () => ({}) },
-    editing: { type: Boolean, default: false }
-});
-
-const emit = defineEmits(['save', 'cancel']);
-
-const formData = ref({
-    title: props.data.title || '',
-    subtitle: props.data.subtitle || '',
-    layout: props.data.layout || 'grid',
-    columns: props.data.columns || 3,
-    show_icons: props.data.show_icons !== false,
-    features: props.data.features || [],
-    ...props.data
-});
-
-watch(() => props.data, (newData) => {
-    formData.value = { ...newData };
-}, { deep: true });
-
-const save = () => emit('save', formData.value);
-</script>
-
-<template>
-    <div v-if="editing" class="space-y-4">
-        <div>
-            <label class="mb-1.5 block text-sm font-medium text-foreground">Title</label>
-            <input v-model="formData.title" type="text"
-                class="w-full rounded-lg border border-sidebar-border bg-background px-3 py-2 text-sm"
-                placeholder="Our Features" />
-        </div>
-
-        <div>
-            <label class="mb-1.5 block text-sm font-medium text-foreground">Subtitle</label>
-            <input v-model="formData.subtitle" type="text"
-                class="w-full rounded-lg border border-sidebar-border bg-background px-3 py-2 text-sm"
-                placeholder="What we offer" />
-        </div>
-
-        <div>
-            <label class="mb-1.5 block text-sm font-medium text-foreground">Layout</label>
-            <select v-model="formData.layout"
-                class="w-full rounded-lg border border-sidebar-border bg-background px-3 py-2 text-sm">
-                <option value="grid">Grid</option>
-                <option value="list">List</option>
-                <option value="carousel">Carousel</option>
-            </select>
-        </div>
-
-        <div v-if="formData.layout === 'grid'">
-            <label class="mb-1.5 block text-sm font-medium text-foreground">Columns</label>
-            <input v-model.number="formData.columns" type="number" min="2" max="4"
-                class="w-full rounded-lg border border-sidebar-border bg-background px-3 py-2 text-sm" />
-        </div>
-
-        <div class="flex items-center gap-3">
-            <input id="show_icons" v-model="formData.show_icons" type="checkbox"
-                class="h-4 w-4 rounded border-sidebar-border text-primary" />
-            <label for="show_icons" class="text-sm font-medium text-foreground">Show Icons</label>
-        </div>
-
-        <div class="flex gap-2 border-t border-sidebar-border pt-4">
-            <button @click="save" type="button"
-                class="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90">
-                Save
-            </button>
-            <button @click="$emit('cancel')" type="button"
-                class="rounded-lg border border-sidebar-border px-4 py-2 text-sm font-medium hover:bg-muted">
-                Cancel
-            </button>
-        </div>
-    </div>
-
-    <div v-else class="rounded-lg bg-muted/30 p-4">
-        <h3 class="mb-2 text-lg font-bold">{{ formData.title || 'Features Section' }}</h3>
-        <p v-if="formData.subtitle" class="mb-2 text-sm text-muted-foreground">{{ formData.subtitle }}</p>
-        <div class="flex gap-2 mt-2">
-            <span class="rounded-full bg-blue-500/10 px-2 py-1 text-xs font-medium text-blue-600">
-                {{ formData.layout }}
-            </span>
-            <span v-if="formData.layout === 'grid'" class="rounded-full bg-purple-500/10 px-2 py-1 text-xs font-medium text-purple-600">
-                {{ formData.columns }} columns
-            </span>
-        </div>
-    </div>
-</template>
-```
-
 ---
 
 ## Creating Blade Templates
@@ -613,51 +520,6 @@ Blade templates receive a `$section` variable containing the section data:
 </section>
 ```
 
-### Example: Features Grid
-
-```blade
-<section class="features-section py-16">
-    <div class="container mx-auto px-4">
-        @if(!empty($section['data']['title']))
-            <div class="mb-12 text-center">
-                <h2 class="mb-4 text-4xl font-bold text-foreground">
-                    {{ $section['data']['title'] }}
-                </h2>
-                @if(!empty($section['data']['subtitle']))
-                    <p class="text-lg text-muted-foreground">
-                        {{ $section['data']['subtitle'] }}
-                    </p>
-                @endif
-            </div>
-        @endif
-
-        @if(!empty($section['data']['features']))
-            <div class="grid gap-8 md:grid-cols-{{ $section['data']['columns'] ?? 3 }}">
-                @foreach($section['data']['features'] as $feature)
-                    <div class="rounded-lg border border-sidebar-border bg-card p-6 shadow-sm transition hover:shadow-md">
-                        @if(!empty($section['data']['show_icons']) && !empty($feature['icon']))
-                            <div class="mb-4 text-4xl">{{ $feature['icon'] }}</div>
-                        @endif
-
-                        @if(!empty($feature['title']))
-                            <h3 class="mb-2 text-xl font-semibold text-foreground">
-                                {{ $feature['title'] }}
-                            </h3>
-                        @endif
-
-                        @if(!empty($feature['description']))
-                            <p class="text-muted-foreground">
-                                {{ $feature['description'] }}
-                            </p>
-                        @endif
-                    </div>
-                @endforeach
-            </div>
-        @endif
-    </div>
-</section>
-```
-
 ### Conditional Rendering Best Practices
 
 Always check if data exists before rendering:
@@ -678,10 +540,10 @@ Always check if data exists before rendering:
 
 ### CSS Files
 
-Place CSS in `themes/your-theme/assets/css/`:
+Place CSS in `resources/js/themes/your-theme/assets/css/`:
 
 ```css
-/* themes/my-theme/assets/css/theme.css */
+/* resources/js/themes/my-theme/assets/css/theme.css */
 
 .my-theme-hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -694,10 +556,10 @@ Place CSS in `themes/your-theme/assets/css/`:
 
 ### JavaScript Files
 
-Place JS in `themes/your-theme/assets/js/`:
+Place JS in `resources/js/themes/your-theme/assets/js/`:
 
 ```javascript
-// themes/my-theme/assets/js/theme.js
+// resources/js/themes/my-theme/assets/js/theme.js
 
 document.addEventListener('DOMContentLoaded', function() {
     // Theme-specific JavaScript
@@ -709,16 +571,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ```blade
 {{-- In your Blade template --}}
-<link rel="stylesheet" href="{{ asset('themes/my-theme/assets/css/theme.css') }}">
-<script src="{{ asset('themes/my-theme/assets/js/theme.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('resources/js/themes/my-theme/assets/css/theme.css') }}">
+<script src="{{ asset('resources/js/themes/my-theme/assets/js/theme.js') }}"></script>
 ```
 
 ### Images
 
-Place images in `themes/your-theme/assets/images/`:
+Place images in `resources/js/themes/your-theme/assets/images/`:
 
 ```blade
-<img src="{{ asset('themes/my-theme/assets/images/logo.svg') }}" alt="Logo">
+<img src="{{ asset('resources/js/themes/my-theme/assets/images/logo.svg') }}" alt="Logo">
 ```
 
 ---
@@ -768,7 +630,23 @@ Place images in `themes/your-theme/assets/images/`:
 - **Vue components**: PascalCase (e.g., `HeroBannerForm.vue`)
 - **Blade templates**: lowercase-with-dashes (e.g., `hero-banner.blade.php`)
 
-### 2. Data Validation
+### 2. Theme Portability
+
+Keep all theme files in one directory:
+```
+resources/js/themes/my-theme/
+├── theme.json
+├── forms/
+├── sections/
+└── assets/
+```
+
+This makes it easy to:
+- Share themes (zip the folder)
+- Version control themes
+- Install themes from others
+
+### 3. Data Validation
 
 Always validate data in Vue forms:
 
@@ -786,7 +664,7 @@ const save = () => {
 </script>
 ```
 
-### 3. Default Values
+### 4. Default Values
 
 Provide sensible defaults:
 
@@ -799,7 +677,7 @@ const formData = ref({
 });
 ```
 
-### 4. Responsive Design
+### 5. Responsive Design
 
 Use Tailwind's responsive classes:
 
@@ -809,7 +687,7 @@ Use Tailwind's responsive classes:
 </div>
 ```
 
-### 5. Accessibility
+### 6. Accessibility
 
 - Use semantic HTML
 - Add proper ARIA labels
@@ -821,30 +699,6 @@ Use Tailwind's responsive classes:
     <span class="sr-only">Close</span>
     ×
 </button>
-```
-
-### 6. Performance
-
-- Optimize images
-- Minimize CSS/JS
-- Use lazy loading for images
-- Avoid inline styles
-
-### 7. Documentation
-
-Document your sections in comments:
-
-```vue
-<!--
-  Hero Banner Form
-  
-  Fields:
-  - title: Main heading text
-  - subtitle: Supporting text
-  - button_text: CTA button label
-  - button_url: CTA button destination
-  - background_image: Hero background image URL
--->
 ```
 
 ---
@@ -878,7 +732,7 @@ Document your sections in comments:
 **Problem**: Section doesn't display on frontend
 
 **Solutions**:
-1. Verify Blade file is in `themes/your-theme/sections/`
+1. Verify Blade file is in `resources/js/themes/your-theme/sections/`
 2. Check `bladeTemplate` path in `theme.json` uses dot notation correctly
 3. Ensure you're accessing `$section['data']` correctly
 4. Check for PHP/Blade syntax errors
@@ -889,39 +743,43 @@ Document your sections in comments:
 **Problem**: CSS/JS/Images not loading
 
 **Solutions**:
-1. Verify assets are in `themes/your-theme/assets/`
-2. Check asset paths use `asset()` helper
-3. Ensure public directory is accessible
-4. Run `php artisan storage:link` if using storage
-5. Check file permissions
+1. Verify assets are in `resources/js/themes/your-theme/assets/`
+2. Check asset paths use `asset()` helper with correct path
+3. Ensure files are accessible
+4. Check file permissions
+5. Verify Vite is running for development
 
-### Section Data Not Saving
+---
 
-**Problem**: Form data doesn't persist after saving
+## Sharing Your Theme
 
-**Solutions**:
-1. Verify `emit('save', formData.value)` is called
-2. Check formData includes all necessary fields
-3. Ensure parent PageBuilder is handling save event
-4. Check browser console for JavaScript errors
-5. Verify database connection
+### Package Your Theme
+
+1. Navigate to `resources/js/themes/`
+2. Zip your theme folder: `my-theme.zip`
+3. Share the zip file
+
+### Install a Theme
+
+1. Extract theme zip to `resources/js/themes/`
+2. Navigate to `/admin/themes`
+3. Click "Sync Themes"
+4. Activate the new theme
 
 ---
 
 ## Example: Complete Theme
 
-Here's a complete example of a simple theme with two sections:
+Here's a complete example of a simple theme:
 
 ### Directory Structure
 
 ```
 resources/js/themes/simple/
 ├── theme.json
-└── forms/
-    ├── HeaderForm.vue
-    └── ContentForm.vue
-
-themes/simple/
+├── forms/
+│   ├── HeaderForm.vue
+│   └── ContentForm.vue
 ├── sections/
 │   ├── header.blade.php
 │   └── content.blade.php
@@ -958,72 +816,6 @@ themes/simple/
 }
 ```
 
-### HeaderForm.vue
-
-```vue
-<script setup>
-import { ref, watch } from 'vue';
-
-const props = defineProps({
-    data: { type: Object, default: () => ({}) },
-    editing: { type: Boolean, default: false }
-});
-
-const emit = defineEmits(['save', 'cancel']);
-
-const formData = ref({
-    title: props.data.title || '',
-    ...props.data
-});
-
-watch(() => props.data, (newData) => {
-    formData.value = { ...newData };
-}, { deep: true });
-
-const save = () => emit('save', formData.value);
-</script>
-
-<template>
-    <div v-if="editing" class="space-y-4">
-        <div>
-            <label class="mb-1.5 block text-sm font-medium text-foreground">Page Title</label>
-            <input v-model="formData.title" type="text"
-                class="w-full rounded-lg border border-sidebar-border bg-background px-3 py-2 text-sm"
-                placeholder="Enter page title" />
-        </div>
-
-        <div class="flex gap-2 border-t border-sidebar-border pt-4">
-            <button @click="save" type="button"
-                class="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90">
-                Save
-            </button>
-            <button @click="$emit('cancel')" type="button"
-                class="rounded-lg border border-sidebar-border px-4 py-2 text-sm font-medium hover:bg-muted">
-                Cancel
-            </button>
-        </div>
-    </div>
-
-    <div v-else class="rounded-lg bg-muted/30 p-4">
-        <h3 class="text-lg font-bold">{{ formData.title || 'Header' }}</h3>
-    </div>
-</template>
-```
-
-### header.blade.php
-
-```blade
-<header class="bg-white shadow-sm">
-    <div class="container mx-auto px-4 py-6">
-        @if(!empty($section['data']['title']))
-            <h1 class="text-3xl font-bold text-gray-900">
-                {{ $section['data']['title'] }}
-            </h1>
-        @endif
-    </div>
-</header>
-```
-
 ---
 
 ## Next Steps
@@ -1043,13 +835,5 @@ const save = () => emit('save', formData.value);
 - [Vite Documentation](https://vitejs.dev/)
 
 ---
-
-## Support
-
-If you encounter issues:
-1. Check this guide's troubleshooting section
-2. Review the default theme for examples
-3. Check browser console for errors
-4. Verify file paths and naming conventions
 
 Happy theme building! 🎨

@@ -8,13 +8,11 @@ use Illuminate\Support\Facades\Log;
 
 class ThemeService
 {
-    protected string $themesPath;
     protected string $jsThemesPath;
 
     public function __construct()
     {
-        $this->themesPath = base_path('themes'); // For Blade templates and assets
-        $this->jsThemesPath = resource_path('js/themes'); // For Vue forms and theme.json
+        $this->jsThemesPath = resource_path('js/themes'); // All theme files in one location
     }
 
     /**
@@ -160,17 +158,9 @@ class ThemeService
     }
 
     /**
-     * Get the full path to a theme directory (for Blade templates).
+     * Get the full path to a theme directory.
      */
     public function getThemePath(string $slug): string
-    {
-        return $this->themesPath . '/' . $slug;
-    }
-
-    /**
-     * Get the full path to a theme's JS directory (for Vue components).
-     */
-    public function getJsThemePath(string $slug): string
     {
         return $this->jsThemesPath . '/' . $slug;
     }
@@ -180,9 +170,9 @@ class ThemeService
      */
     public function themeExists(string $slug): bool
     {
-        $jsThemePath = $this->getJsThemePath($slug);
-        $themeJsonPath = $jsThemePath . '/theme.json';
+        $themePath = $this->getThemePath($slug);
+        $themeJsonPath = $themePath . '/theme.json';
 
-        return File::exists($jsThemePath) && File::exists($themeJsonPath);
+        return File::exists($themePath) && File::exists($themeJsonPath);
     }
 }
