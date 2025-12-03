@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="page-content">
-    @if($page->title)
+    <!-- @if($page->title)
     <h1 class="page-title">{{ $page->title }}</h1>
     @endif
 
@@ -10,7 +10,7 @@
     <div class="page-description">
         {{ $page->description }}
     </div>
-    @endif
+    @endif -->
 
     <div class="page-sections">
         @foreach($sections as $sectionHtml)

@@ -2,7 +2,7 @@
 
 <?php $__env->startSection('content'); ?>
 <div class="page-content">
-    <?php if($page->title): ?>
+    <!-- <?php if($page->title): ?>
     <h1 class="page-title"><?php echo e($page->title); ?></h1>
     <?php endif; ?>
 
@@ -11,7 +11,7 @@
         <?php echo e($page->description); ?>
 
     </div>
-    <?php endif; ?>
+    <?php endif; ?> -->
 
     <div class="page-sections">
         <?php $__currentLoopData = $sections; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sectionHtml): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

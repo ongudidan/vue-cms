@@ -15,15 +15,11 @@ Route::get('/media-file/{path}', function ($path) {
     return \Illuminate\Support\Facades\Storage::disk('public')->response($path);
 })->where('path', '.*')->name('media.file');
 
-// Public page routes
-Route::get('/', [\App\Http\Controllers\PageController::class, 'showHomepage'])->name('home');
-Route::get('/{slug}', [\App\Http\Controllers\PageController::class, 'show'])->name('page.show');
-
-Route::get('dashboard', function () {
+Route::get('/dashboard', function () {
     return Inertia::render('Admin/Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('admin/components', function () {
+Route::get('/admin/components', function () {
     return Inertia::render('Admin/Components/Components');
 })->middleware(['auth', 'verified'])->name('admin.components');
 
@@ -109,3 +105,9 @@ Route::middleware(['auth', 'verified'])->prefix('api')->group(function () {
 
 
 require __DIR__ . '/settings.php';
+
+
+// Public page routes
+
+Route::get('/{slug}', [\App\Http\Controllers\PageController::class, 'show'])->name('page.show');
+Route::get('/', [\App\Http\Controllers\PageController::class, 'showHomepage'])->name('home');
