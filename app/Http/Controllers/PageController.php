@@ -61,7 +61,7 @@ class PageController extends Controller
             $validated['slug'] = Str::slug($validated['title']);
         }
 
-        $content = $validated['content'] ?? [];
+        $content = $request->input('content') ?? [];
         unset($validated['content']);
 
         $page = Page::create($validated);
@@ -94,8 +94,8 @@ class PageController extends Controller
             $validated['slug'] = Str::slug($validated['title']);
         }
 
-        if (isset($validated['content'])) {
-            $validated['content'] = $this->syncMedia($page, $validated['content']);
+        if ($request->has('content')) {
+            $validated['content'] = $this->syncMedia($page, $request->input('content'));
         }
 
         $page->update($validated);
@@ -125,31 +125,37 @@ class PageController extends Controller
      */
     protected function syncMedia(Page $page, $content)
     {
-        if (empty($content))
-            return [];
-
-        $processedContent = $content;
+        $processedContent = $content ?? [];
         $usedMediaIds = [];
 
-        foreach ($processedContent as &$section) {
-            if (isset($section['data']['background_image'])) {
-                $image = $section['data']['background_image'];
+        foreach ($processedContent as $index => &$section) {
+            // Try to get the file directly from the request using the structured key
+            $requestFile = request()->file("content.{$index}.data.background_image");
 
-                if ($image instanceof \Illuminate\Http\UploadedFile) {
-                    $path = $image->store('media/pages', 'public');
+            if ($requestFile && $requestFile instanceof \Illuminate\Http\UploadedFile) {
+                $image = $requestFile;
+                $path = $image->store('media/pages', 'public');
 
-                    $media = $page->media()->create([
-                        'file_path' => $path,
-                        'file_name' => $image->getClientOriginalName(),
-                        'mime_type' => $image->getMimeType(),
-                        'size' => $image->getSize(),
-                    ]);
+                $media = $page->media()->create([
+                    'file_path' => $path,
+                    'file_name' => $image->getClientOriginalName(),
+                    'mime_type' => $image->getMimeType(),
+                    'size' => $image->getSize(),
+                ]);
 
-                    $section['data']['background_image'] = '/media-file/' . $path;
-                    $usedMediaIds[] = $media->id;
-                } elseif (is_string($image) && !empty($image)) {
+                $section['data']['background_image'] = '/media-file/' . $path;
+                $usedMediaIds[] = $media->id;
+            } else {
+                $image = $section['data']['background_image'] ?? null;
+
+                if ($image && is_string($image) && !empty($image)) {
                     // Extract path from URL if it's one of ours
-                    $searchPath = str_replace('/media-file/', '', $image);
+                    // Handle both absolute URLs and relative paths
+                    $searchPath = $image;
+                    if (str_contains($image, '/media-file/')) {
+                        $parts = explode('/media-file/', $image);
+                        $searchPath = end($parts);
+                    }
 
                     $media = $page->media()->where('file_path', $searchPath)->first();
                     if ($media) {
@@ -159,7 +165,7 @@ class PageController extends Controller
             }
         }
 
-        // Delete media that are no longer used in any section
+        // Delete media that are no longer used in ANY section
         $page->media()
             ->whereNotIn('id', $usedMediaIds)
             ->each(fn($media) => $media->delete());
