@@ -1,5 +1,6 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, watch, onBeforeUnmount } from 'vue';
+import { X, Image as ImageIcon } from 'lucide-vue-next';
 
 const props = defineProps({
     data: { type: Object, default: () => ({}) },
@@ -22,6 +23,27 @@ const formData = ref({
 watch(() => props.data, (newData) => {
     formData.value = { ...newData };
 }, { deep: true });
+
+const imagePreview = ref(null);
+
+const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        formData.value.background_image = file;
+        imagePreview.value = URL.createObjectURL(file);
+    }
+};
+
+const removeImage = () => {
+    formData.value.background_image = null;
+    imagePreview.value = null;
+};
+
+onBeforeUnmount(() => {
+    if (imagePreview.value) {
+        URL.revokeObjectURL(imagePreview.value);
+    }
+});
 
 const save = () => emit('save', formData.value);
 </script>
@@ -73,10 +95,28 @@ const save = () => emit('save', formData.value);
         </div>
 
         <div>
-            <label class="mb-1.5 block text-sm font-medium text-foreground">Background Image URL</label>
-            <input v-model="formData.background_image" type="text"
-                class="w-full rounded-lg border border-sidebar-border bg-background px-3 py-2 text-sm"
-                placeholder="https://example.com/image.jpg" />
+            <label class="mb-1.5 block text-sm font-medium text-foreground">Background Image</label>
+            <div class="mt-1 flex items-center gap-4">
+                <div v-if="formData.background_image"
+                    class="relative h-20 w-32 overflow-hidden rounded-lg border border-sidebar-border bg-muted">
+                    <img :src="imagePreview || formData.background_image" class="h-full w-full object-cover" />
+                    <button @click="removeImage" type="button"
+                        class="absolute right-1 top-1 rounded-full bg-black/50 p-1 text-white hover:bg-black">
+                        <X class="h-3 w-3" />
+                    </button>
+                </div>
+                <div v-else
+                    class="flex h-20 w-32 flex-col items-center justify-center rounded-lg border-2 border-dashed border-sidebar-border bg-muted/30 text-muted-foreground">
+                    <ImageIcon class="h-6 w-6" />
+                    <span class="text-[10px]">No image</span>
+                </div>
+
+                <label
+                    class="cursor-pointer rounded-lg bg-secondary px-3 py-1.5 text-xs font-medium hover:bg-secondary/80">
+                    <span>{{ formData.background_image ? 'Change' : 'Upload' }}</span>
+                    <input type="file" @change="handleFileChange" accept="image/*" class="hidden" />
+                </label>
+            </div>
         </div>
 
         <div class="flex gap-2 border-t border-sidebar-border pt-4">

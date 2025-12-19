@@ -44,5 +44,12 @@ class Blog extends Model
                 $model->user_id = Auth::id();
             }
         });
+
+        // Delete media when blog is deleted
+        static::deleting(function ($blog) {
+            $blog->media()->each(function ($media) {
+                $media->delete();
+            });
+        });
     }
 }

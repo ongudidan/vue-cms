@@ -61,7 +61,10 @@ watch(
 
 const submit = () => {
     if (isEditing.value && props.page) {
-        form.put(`/admin/pages/${props.page.id}`, {
+        form.transform((data) => ({
+            ...data,
+            _method: 'put',
+        })).post(`/admin/pages/${props.page.id}`, {
             preserveScroll: true,
             onSuccess: () => emit('close'),
         });

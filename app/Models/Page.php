@@ -3,9 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Page extends Model
 {
+    /**
+     * Get all media for the page.
+     */
+    public function media(): MorphMany
+    {
+        return $this->morphMany(Media::class, 'mediable')->ordered();
+    }
     protected $fillable = [
         'title',
         'slug',

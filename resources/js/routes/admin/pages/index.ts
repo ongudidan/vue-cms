@@ -138,7 +138,7 @@ store.form = storeForm
 
 /**
 * @see \App\Http\Controllers\PageController::update
-* @see app/Http/Controllers/PageController.php:73
+* @see app/Http/Controllers/PageController.php:81
 * @route '/admin/pages/{page}'
 */
 export const update = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -153,7 +153,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\PageController::update
-* @see app/Http/Controllers/PageController.php:73
+* @see app/Http/Controllers/PageController.php:81
 * @route '/admin/pages/{page}'
 */
 update.url = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -186,7 +186,7 @@ update.url = (args: { page: number | { id: number } } | [page: number | { id: nu
 
 /**
 * @see \App\Http\Controllers\PageController::update
-* @see app/Http/Controllers/PageController.php:73
+* @see app/Http/Controllers/PageController.php:81
 * @route '/admin/pages/{page}'
 */
 update.put = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -196,7 +196,7 @@ update.put = (args: { page: number | { id: number } } | [page: number | { id: nu
 
 /**
 * @see \App\Http\Controllers\PageController::update
-* @see app/Http/Controllers/PageController.php:73
+* @see app/Http/Controllers/PageController.php:81
 * @route '/admin/pages/{page}'
 */
 const updateForm = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -211,7 +211,7 @@ const updateForm = (args: { page: number | { id: number } } | [page: number | { 
 
 /**
 * @see \App\Http\Controllers\PageController::update
-* @see app/Http/Controllers/PageController.php:73
+* @see app/Http/Controllers/PageController.php:81
 * @route '/admin/pages/{page}'
 */
 updateForm.put = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -228,7 +228,7 @@ update.form = updateForm
 
 /**
 * @see \App\Http\Controllers\PageController::destroy
-* @see app/Http/Controllers/PageController.php:98
+* @see app/Http/Controllers/PageController.php:110
 * @route '/admin/pages/{page}'
 */
 export const destroy = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -243,7 +243,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\PageController::destroy
-* @see app/Http/Controllers/PageController.php:98
+* @see app/Http/Controllers/PageController.php:110
 * @route '/admin/pages/{page}'
 */
 destroy.url = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -276,7 +276,7 @@ destroy.url = (args: { page: number | { id: number } } | [page: number | { id: n
 
 /**
 * @see \App\Http\Controllers\PageController::destroy
-* @see app/Http/Controllers/PageController.php:98
+* @see app/Http/Controllers/PageController.php:110
 * @route '/admin/pages/{page}'
 */
 destroy.delete = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -286,7 +286,7 @@ destroy.delete = (args: { page: number | { id: number } } | [page: number | { id
 
 /**
 * @see \App\Http\Controllers\PageController::destroy
-* @see app/Http/Controllers/PageController.php:98
+* @see app/Http/Controllers/PageController.php:110
 * @route '/admin/pages/{page}'
 */
 const destroyForm = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -301,7 +301,7 @@ const destroyForm = (args: { page: number | { id: number } } | [page: number | {
 
 /**
 * @see \App\Http\Controllers\PageController::destroy
-* @see app/Http/Controllers/PageController.php:98
+* @see app/Http/Controllers/PageController.php:110
 * @route '/admin/pages/{page}'
 */
 destroyForm.delete = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

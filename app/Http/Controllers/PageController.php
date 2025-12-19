@@ -61,7 +61,15 @@ class PageController extends Controller
             $validated['slug'] = Str::slug($validated['title']);
         }
 
-        Page::create($validated);
+        $content = $validated['content'] ?? [];
+        unset($validated['content']);
+
+        $page = Page::create($validated);
+
+        if (!empty($content)) {
+            $page->content = $this->syncMedia($page, $content);
+            $page->save();
+        }
 
         return redirect()->route('admin.pages.index')
             ->with('success', 'Page created successfully.');
@@ -86,6 +94,10 @@ class PageController extends Controller
             $validated['slug'] = Str::slug($validated['title']);
         }
 
+        if (isset($validated['content'])) {
+            $validated['content'] = $this->syncMedia($page, $validated['content']);
+        }
+
         $page->update($validated);
 
         return redirect()->route('admin.pages.index')
@@ -97,10 +109,62 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
+        // Delete all associated media
+        $page->media()->each(function ($media) {
+            $media->delete();
+        });
+
         $page->delete();
 
         return redirect()->route('admin.pages.index')
             ->with('success', 'Page deleted successfully.');
+    }
+
+    /**
+     * Process content media using custom Media model.
+     */
+    protected function syncMedia(Page $page, $content)
+    {
+        if (empty($content))
+            return [];
+
+        $processedContent = $content;
+        $usedMediaIds = [];
+
+        foreach ($processedContent as &$section) {
+            if (isset($section['data']['background_image'])) {
+                $image = $section['data']['background_image'];
+
+                if ($image instanceof \Illuminate\Http\UploadedFile) {
+                    $path = $image->store('media/pages', 'public');
+
+                    $media = $page->media()->create([
+                        'file_path' => $path,
+                        'file_name' => $image->getClientOriginalName(),
+                        'mime_type' => $image->getMimeType(),
+                        'size' => $image->getSize(),
+                    ]);
+
+                    $section['data']['background_image'] = '/media-file/' . $path;
+                    $usedMediaIds[] = $media->id;
+                } elseif (is_string($image) && !empty($image)) {
+                    // Extract path from URL if it's one of ours
+                    $searchPath = str_replace('/media-file/', '', $image);
+
+                    $media = $page->media()->where('file_path', $searchPath)->first();
+                    if ($media) {
+                        $usedMediaIds[] = $media->id;
+                    }
+                }
+            }
+        }
+
+        // Delete media that are no longer used in any section
+        $page->media()
+            ->whereNotIn('id', $usedMediaIds)
+            ->each(fn($media) => $media->delete());
+
+        return $processedContent;
     }
 
     /**

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Storage;
 
 class Media extends Model
 {
+    protected $table = 'site_media';
+
     protected $fillable = [
         'mediable_type',
         'mediable_id',
@@ -41,10 +43,9 @@ class Media extends Model
     protected function url(): Attribute
     {
         return Attribute::make(
-            get: fn () => '/media-file/' . $this->file_path,
+            get: fn() => '/media-file/' . $this->file_path,
         );
     }
-
 
     /**
      * Scope to order media by the order column.

@@ -28,4 +28,16 @@ class Project extends Model
     {
         return $this->morphMany(Media::class, 'mediable')->ordered();
     }
+
+    /**
+     * Booted method to handle model events.
+     */
+    protected static function booted()
+    {
+        static::deleting(function ($project) {
+            $project->media()->each(function ($media) {
+                $media->delete();
+            });
+        });
+    }
 }

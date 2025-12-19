@@ -47,5 +47,12 @@ class Event extends Model
                 $model->user_id = Auth::id();
             }
         });
+
+        // Delete media when event is deleted
+        static::deleting(function ($event) {
+            $event->media()->each(function ($media) {
+                $media->delete();
+            });
+        });
     }
 }

@@ -138,7 +138,7 @@ store.form = storeForm
 
 /**
 * @see \App\Http\Controllers\PageController::update
-* @see app/Http/Controllers/PageController.php:73
+* @see app/Http/Controllers/PageController.php:81
 * @route '/admin/pages/{page}'
 */
 export const update = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -153,7 +153,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\PageController::update
-* @see app/Http/Controllers/PageController.php:73
+* @see app/Http/Controllers/PageController.php:81
 * @route '/admin/pages/{page}'
 */
 update.url = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -186,7 +186,7 @@ update.url = (args: { page: number | { id: number } } | [page: number | { id: nu
 
 /**
 * @see \App\Http\Controllers\PageController::update
-* @see app/Http/Controllers/PageController.php:73
+* @see app/Http/Controllers/PageController.php:81
 * @route '/admin/pages/{page}'
 */
 update.put = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -196,7 +196,7 @@ update.put = (args: { page: number | { id: number } } | [page: number | { id: nu
 
 /**
 * @see \App\Http\Controllers\PageController::update
-* @see app/Http/Controllers/PageController.php:73
+* @see app/Http/Controllers/PageController.php:81
 * @route '/admin/pages/{page}'
 */
 const updateForm = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -211,7 +211,7 @@ const updateForm = (args: { page: number | { id: number } } | [page: number | { 
 
 /**
 * @see \App\Http\Controllers\PageController::update
-* @see app/Http/Controllers/PageController.php:73
+* @see app/Http/Controllers/PageController.php:81
 * @route '/admin/pages/{page}'
 */
 updateForm.put = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -228,7 +228,7 @@ update.form = updateForm
 
 /**
 * @see \App\Http\Controllers\PageController::destroy
-* @see app/Http/Controllers/PageController.php:98
+* @see app/Http/Controllers/PageController.php:110
 * @route '/admin/pages/{page}'
 */
 export const destroy = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -243,7 +243,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\PageController::destroy
-* @see app/Http/Controllers/PageController.php:98
+* @see app/Http/Controllers/PageController.php:110
 * @route '/admin/pages/{page}'
 */
 destroy.url = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -276,7 +276,7 @@ destroy.url = (args: { page: number | { id: number } } | [page: number | { id: n
 
 /**
 * @see \App\Http\Controllers\PageController::destroy
-* @see app/Http/Controllers/PageController.php:98
+* @see app/Http/Controllers/PageController.php:110
 * @route '/admin/pages/{page}'
 */
 destroy.delete = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -286,7 +286,7 @@ destroy.delete = (args: { page: number | { id: number } } | [page: number | { id
 
 /**
 * @see \App\Http\Controllers\PageController::destroy
-* @see app/Http/Controllers/PageController.php:98
+* @see app/Http/Controllers/PageController.php:110
 * @route '/admin/pages/{page}'
 */
 const destroyForm = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -301,7 +301,7 @@ const destroyForm = (args: { page: number | { id: number } } | [page: number | {
 
 /**
 * @see \App\Http\Controllers\PageController::destroy
-* @see app/Http/Controllers/PageController.php:98
+* @see app/Http/Controllers/PageController.php:110
 * @route '/admin/pages/{page}'
 */
 destroyForm.delete = (args: { page: number | { id: number } } | [page: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -318,7 +318,7 @@ destroy.form = destroyForm
 
 /**
 * @see \App\Http\Controllers\PageController::show
-* @see app/Http/Controllers/PageController.php:128
+* @see app/Http/Controllers/PageController.php:192
 * @route '/{slug}'
 */
 export const show = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -333,7 +333,7 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\PageController::show
-* @see app/Http/Controllers/PageController.php:128
+* @see app/Http/Controllers/PageController.php:192
 * @route '/{slug}'
 */
 show.url = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -360,7 +360,7 @@ show.url = (args: { slug: string | number } | [slug: string | number ] | string 
 
 /**
 * @see \App\Http\Controllers\PageController::show
-* @see app/Http/Controllers/PageController.php:128
+* @see app/Http/Controllers/PageController.php:192
 * @route '/{slug}'
 */
 show.get = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -370,7 +370,7 @@ show.get = (args: { slug: string | number } | [slug: string | number ] | string 
 
 /**
 * @see \App\Http\Controllers\PageController::show
-* @see app/Http/Controllers/PageController.php:128
+* @see app/Http/Controllers/PageController.php:192
 * @route '/{slug}'
 */
 show.head = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -380,7 +380,7 @@ show.head = (args: { slug: string | number } | [slug: string | number ] | string
 
 /**
 * @see \App\Http\Controllers\PageController::show
-* @see app/Http/Controllers/PageController.php:128
+* @see app/Http/Controllers/PageController.php:192
 * @route '/{slug}'
 */
 const showForm = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -390,7 +390,7 @@ const showForm = (args: { slug: string | number } | [slug: string | number ] | s
 
 /**
 * @see \App\Http\Controllers\PageController::show
-* @see app/Http/Controllers/PageController.php:128
+* @see app/Http/Controllers/PageController.php:192
 * @route '/{slug}'
 */
 showForm.get = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -400,7 +400,7 @@ showForm.get = (args: { slug: string | number } | [slug: string | number ] | str
 
 /**
 * @see \App\Http\Controllers\PageController::show
-* @see app/Http/Controllers/PageController.php:128
+* @see app/Http/Controllers/PageController.php:192
 * @route '/{slug}'
 */
 showForm.head = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -417,7 +417,7 @@ show.form = showForm
 
 /**
 * @see \App\Http\Controllers\PageController::showHomepage
-* @see app/Http/Controllers/PageController.php:109
+* @see app/Http/Controllers/PageController.php:173
 * @route '/'
 */
 export const showHomepage = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -432,7 +432,7 @@ showHomepage.definition = {
 
 /**
 * @see \App\Http\Controllers\PageController::showHomepage
-* @see app/Http/Controllers/PageController.php:109
+* @see app/Http/Controllers/PageController.php:173
 * @route '/'
 */
 showHomepage.url = (options?: RouteQueryOptions) => {
@@ -441,7 +441,7 @@ showHomepage.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PageController::showHomepage
-* @see app/Http/Controllers/PageController.php:109
+* @see app/Http/Controllers/PageController.php:173
 * @route '/'
 */
 showHomepage.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -451,7 +451,7 @@ showHomepage.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PageController::showHomepage
-* @see app/Http/Controllers/PageController.php:109
+* @see app/Http/Controllers/PageController.php:173
 * @route '/'
 */
 showHomepage.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -461,7 +461,7 @@ showHomepage.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PageController::showHomepage
-* @see app/Http/Controllers/PageController.php:109
+* @see app/Http/Controllers/PageController.php:173
 * @route '/'
 */
 const showHomepageForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -471,7 +471,7 @@ const showHomepageForm = (options?: RouteQueryOptions): RouteFormDefinition<'get
 
 /**
 * @see \App\Http\Controllers\PageController::showHomepage
-* @see app/Http/Controllers/PageController.php:109
+* @see app/Http/Controllers/PageController.php:173
 * @route '/'
 */
 showHomepageForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -481,7 +481,7 @@ showHomepageForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'>
 
 /**
 * @see \App\Http\Controllers\PageController::showHomepage
-* @see app/Http/Controllers/PageController.php:109
+* @see app/Http/Controllers/PageController.php:173
 * @route '/'
 */
 showHomepageForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
