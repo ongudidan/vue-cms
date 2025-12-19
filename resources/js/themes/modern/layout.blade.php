@@ -9,7 +9,7 @@
     <title>{{ $page->title ?? config('app.name', 'Laravel') }}</title>
 
     @if($page->description ?? false)
-    <meta name="description" content="{{ $page->description }}">
+        <meta name="description" content="{{ $page->description }}">
     @endif
 
     <!-- Fonts -->
@@ -36,11 +36,14 @@
 
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body class="font-sans antialiased">
     <!-- Header -->
-    <header class="sticky top-0 z-50 bg-white shadow-sm">
+    <header class="sticky top-0 z-50 bg-white shadow-sm" x-data="{ mobileMenuOpen: false }">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
@@ -51,27 +54,128 @@
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="/" class="text-gray-900 hover:text-primary transition">Home</a>
-                    <a href="/about" class="text-gray-900 hover:text-primary transition">About</a>
-                    <a href="/services" class="text-gray-900 hover:text-primary transition">Services</a>
-                    <a href="/contact" class="px-4 py-2 rounded-md bg-primary text-white hover:bg-opacity-90 transition">Contact</a>
+                    @foreach($navigation_menus as $menu)
+                        @php
+                            $url = $menu->url;
+                            if ($menu->type === 'page' && $menu->page) {
+                                $url = $menu->page->is_homepage ? '/' : '/' . $menu->page->slug;
+                            }
+                            $hasChildren = $menu->has_children;
+                        @endphp
+
+                        @if($hasChildren)
+                            <div class="relative group" x-data="{ open: false }" @mouseenter="open = true"
+                                @mouseleave="open = false">
+                                <button class="flex items-center text-gray-900 hover:text-primary transition py-2">
+                                    {{ $menu->title }}
+                                    <i data-feather="chevron-down" class="w-4 h-4 ml-1"></i>
+                                </button>
+                                <div x-show="open" x-transition:enter="transition ease-out duration-200"
+                                    x-transition:enter-start="opacity-0 translate-y-1"
+                                    x-transition:enter-end="opacity-100 translate-y-0"
+                                    class="absolute left-0 mt-0 w-48 bg-white border border-gray-100 shadow-lg rounded-md overflow-hidden z-50">
+                                    @foreach($menu->getChildItems() as $child)
+                                        @php
+                                            $childUrl = '#';
+                                            if ($child instanceof \App\Models\Page) {
+                                                $childUrl = $child->is_homepage ? '/' : '/' . $child->slug;
+                                            } elseif ($child instanceof \App\Models\Project) {
+                                                $childUrl = '/projects/' . $child->slug;
+                                            } elseif ($child instanceof \App\Models\Blog) {
+                                                $childUrl = '/blogs/' . $child->slug;
+                                            } elseif ($child instanceof \App\Models\Service) {
+                                                $childUrl = '/services/' . $child->slug;
+                                            } elseif ($child instanceof \App\Models\Event) {
+                                                $childUrl = '/events/' . $child->slug;
+                                            } elseif ($child instanceof \App\Models\Menu) {
+                                                $childUrl = $child->url;
+                                                if ($child->type === 'page' && $child->page) {
+                                                    $childUrl = $child->page->is_homepage ? '/' : '/' . $child->page->slug;
+                                                }
+                                            }
+                                        @endphp
+                                        <a href="{{ $childUrl }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">
+                                            {{ $child->title }}
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @else
+                            @if($loop->last)
+                                <a href="{{ $url }}"
+                                    class="px-4 py-2 rounded-md bg-primary text-white hover:bg-opacity-90 transition">{{ $menu->title }}</a>
+                            @else
+                                <a href="{{ $url }}" class="text-gray-900 hover:text-primary transition">{{ $menu->title }}</a>
+                            @endif
+                        @endif
+                    @endforeach
                 </div>
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
-                    <button onclick="toggleMobileMenu()" class="text-gray-900">
-                        <i data-feather="menu" class="w-6 h-6"></i>
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-900 focus:outline-none">
+                        <i data-feather="menu" x-show="!mobileMenuOpen" class="w-6 h-6"></i>
+                        <i data-feather="x" x-show="mobileMenuOpen" class="w-6 h-6"></i>
                     </button>
                 </div>
             </div>
 
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden pb-4">
-                <div class="flex flex-col space-y-4">
-                    <a href="/" class="text-gray-900 hover:text-primary transition">Home</a>
-                    <a href="/about" class="text-gray-900 hover:text-primary transition">About</a>
-                    <a href="/services" class="text-gray-900 hover:text-primary transition">Services</a>
-                    <a href="/contact" class="text-gray-900 hover:text-primary transition">Contact</a>
+            <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
+                class="md:hidden pb-4">
+                <div class="flex flex-col space-y-2">
+                    @foreach($navigation_menus as $menu)
+                        @php
+                            $url = $menu->url;
+                            if ($menu->type === 'page' && $menu->page) {
+                                $url = $menu->page->is_homepage ? '/' : '/' . $menu->page->slug;
+                            }
+                            $hasChildren = $menu->has_children;
+                        @endphp
+
+                        @if($hasChildren)
+                            <div x-data="{ open: false }">
+                                <button @click="open = !open"
+                                    class="flex items-center justify-between w-full text-gray-900 hover:text-primary transition py-2">
+                                    <span>{{ $menu->title }}</span>
+                                    <i data-feather="chevron-down" class="w-4 h-4 transition-transform"
+                                        :class="{'rotate-180': open}"></i>
+                                </button>
+                                <div x-show="open" class="pl-4 space-y-2 border-l border-gray-100 ml-1">
+                                    @foreach($menu->getChildItems() as $child)
+                                        @php
+                                            $childUrl = '#';
+                                            if ($child instanceof \App\Models\Page) {
+                                                $childUrl = $child->is_homepage ? '/' : '/' . $child->slug;
+                                            } elseif ($child instanceof \App\Models\Project) {
+                                                $childUrl = '/projects/' . $child->slug;
+                                            } elseif ($child instanceof \App\Models\Blog) {
+                                                $childUrl = '/blogs/' . $child->slug;
+                                            } elseif ($child instanceof \App\Models\Service) {
+                                                $childUrl = '/services/' . $child->slug;
+                                            } elseif ($child instanceof \App\Models\Event) {
+                                                $childUrl = '/events/' . $child->slug;
+                                            } elseif ($child instanceof \App\Models\Menu) {
+                                                $childUrl = $child->url;
+                                                if ($child->type === 'page' && $child->page) {
+                                                    $childUrl = $child->page->is_homepage ? '/' : '/' . $child->page->slug;
+                                                }
+                                            }
+                                        @endphp
+                                        <a href="{{ $childUrl }}" class="block py-2 text-sm text-gray-600 hover:text-primary">
+                                            {{ $child->title }}
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @else
+                            <a href="{{ $url }}" class="block py-2 text-gray-900 hover:text-primary transition">
+                                {{ $menu->title }}
+                            </a>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </nav>

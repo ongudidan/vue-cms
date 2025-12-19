@@ -17,13 +17,14 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        if (!User::where('email', 'admin@admin.com')->exists()) {
-            User::factory()->create([
+       if (!User::where('email', 'admin@admin.com')->exists()) {
+            User::factory()->withoutTwoFactor()->create([
                 'name' => 'Admin',
                 'email' => 'admin@admin.com',
                 'password' => bcrypt('123456'),
             ]);
         }
+
 
         $this->call([
             PageSeeder::class,

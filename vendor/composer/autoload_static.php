@@ -20,7 +20,6 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
-        '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '2203a247e6fda86070a5e4e07aed533a' => __DIR__ . '/..' . '/symfony/clock/Resources/now.php',
         '09f6b20656683369174dd6fa83b7e5fb' => __DIR__ . '/..' . '/symfony/polyfill-uuid/bootstrap.php',
@@ -28,6 +27,7 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '47e1160838b5e5a10346ac4084b58c23' => __DIR__ . '/..' . '/laravel/prompts/src/helpers.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
+        '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         '9d2b9fc6db0f153a0a149fefb182415e' => __DIR__ . '/..' . '/symfony/polyfill-php84/bootstrap.php',
         '476ca15b8d69b04665cd879be9cb4c68' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/functions.php',
         '265b4faa2b3a9766332744949e83bf97' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/helpers.php',
@@ -35,6 +35,7 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'f57d353b41eb2e234b26064d63d8c5dd' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Filesystem/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '7f7ac2ddea9cc3fb4b2cc201d63dbc10' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Log/functions.php',
+        '91892b814db86b8442ad76273bb7aec5' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Reflection/helpers.php',
         '493c6aea52f6009bab023b26c21a386a' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/functions.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'a1cfe24d14977df6878b9bf804af2d1c' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Phpunit/Autoload.php',
@@ -49,26 +50,30 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
     );
 
     public static $prefixLengthsPsr4 = array (
-        'v' =>
+        'v' => 
         array (
             'voku\\' => 5,
         ),
-        'p' =>
+        'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
-        'W' =>
+        'Z' => 
+        array (
+            'ZipStream\\' => 10,
+        ),
+        'W' => 
         array (
             'Whoops\\' => 7,
             'Webmozart\\Assert\\' => 17,
         ),
-        'T' =>
+        'T' => 
         array (
             'TijsVerkoyen\\CssToInlineStyles\\' => 31,
             'Tests\\' => 6,
             'Termwind\\' => 9,
         ),
-        'S' =>
+        'S' => 
         array (
             'Symfony\\Polyfill\\Uuid\\' => 22,
             'Symfony\\Polyfill\\Php85\\' => 23,
@@ -100,13 +105,18 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\Clock\\' => 24,
+            'Spatie\\TemporaryDirectory\\' => 26,
+            'Spatie\\MediaLibrary\\' => 20,
+            'Spatie\\LaravelPackageTools\\' => 27,
+            'Spatie\\Image\\' => 13,
+            'Spatie\\ImageOptimizer\\' => 22,
         ),
-        'R' =>
+        'R' => 
         array (
             'Ramsey\\Uuid\\' => 12,
             'Ramsey\\Collection\\' => 18,
         ),
-        'P' =>
+        'P' => 
         array (
             'Psy\\' => 4,
             'Psr\\SimpleCache\\' => 16,
@@ -130,17 +140,17 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
             'PHPUnit\\Architecture\\' => 21,
             'PHPStan\\PhpDocParser\\' => 21,
         ),
-        'N' =>
+        'N' => 
         array (
             'NunoMaduro\\Collision\\' => 21,
             'Nette\\' => 6,
         ),
-        'M' =>
+        'M' => 
         array (
             'Monolog\\' => 8,
             'Mockery\\' => 8,
         ),
-        'L' =>
+        'L' => 
         array (
             'League\\Uri\\' => 11,
             'League\\MimeTypeDetection\\' => 25,
@@ -156,17 +166,17 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
             'Laravel\\Pail\\' => 13,
             'Laravel\\Fortify\\' => 16,
         ),
-        'J' =>
+        'J' => 
         array (
             'Jean85\\' => 7,
         ),
-        'I' =>
+        'I' => 
         array (
             'Inertia\\' => 8,
             'Illuminate\\Support\\' => 19,
             'Illuminate\\' => 11,
         ),
-        'G' =>
+        'G' => 
         array (
             'GuzzleHttp\\UriTemplate\\' => 23,
             'GuzzleHttp\\Psr7\\' => 16,
@@ -174,17 +184,17 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
             'GuzzleHttp\\' => 11,
             'GrahamCampbell\\ResultType\\' => 26,
         ),
-        'F' =>
+        'F' => 
         array (
             'Fruitcake\\Cors\\' => 15,
             'Fidry\\CpuCoreCounter\\' => 21,
             'Faker\\' => 6,
         ),
-        'E' =>
+        'E' => 
         array (
             'Egulias\\EmailValidator\\' => 23,
         ),
-        'D' =>
+        'D' => 
         array (
             'Dotenv\\' => 7,
             'Doctrine\\Inflector\\' => 19,
@@ -196,450 +206,480 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
             'Database\\Factories\\' => 19,
             'DASPRiD\\Enum\\' => 13,
         ),
-        'C' =>
+        'C' => 
         array (
             'Cron\\' => 5,
+            'Composer\\Semver\\' => 16,
             'Carbon\\Doctrine\\' => 16,
             'Carbon\\' => 7,
         ),
-        'B' =>
+        'B' => 
         array (
             'Brick\\Math\\' => 11,
             'BaconQrCode\\' => 12,
         ),
-        'A' =>
+        'A' => 
         array (
             'App\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'voku\\' =>
+        'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
         ),
-        'phpDocumentor\\Reflection\\' =>
+        'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
         ),
-        'Whoops\\' =>
+        'ZipStream\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
+        ),
+        'Whoops\\' => 
         array (
             0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
         ),
-        'Webmozart\\Assert\\' =>
+        'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
-        'TijsVerkoyen\\CssToInlineStyles\\' =>
+        'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
             0 => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src',
         ),
-        'Tests\\' =>
+        'Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
         ),
-        'Termwind\\' =>
+        'Termwind\\' => 
         array (
             0 => __DIR__ . '/..' . '/nunomaduro/termwind/src',
         ),
-        'Symfony\\Polyfill\\Uuid\\' =>
+        'Symfony\\Polyfill\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-uuid',
         ),
-        'Symfony\\Polyfill\\Php85\\' =>
+        'Symfony\\Polyfill\\Php85\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php85',
         ),
-        'Symfony\\Polyfill\\Php84\\' =>
+        'Symfony\\Polyfill\\Php84\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php84',
         ),
-        'Symfony\\Polyfill\\Php83\\' =>
+        'Symfony\\Polyfill\\Php83\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php83',
         ),
-        'Symfony\\Polyfill\\Php80\\' =>
+        'Symfony\\Polyfill\\Php80\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' =>
+        'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'Symfony\\Polyfill\\Intl\\Normalizer\\' =>
+        'Symfony\\Polyfill\\Intl\\Normalizer\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer',
         ),
-        'Symfony\\Polyfill\\Intl\\Idn\\' =>
+        'Symfony\\Polyfill\\Intl\\Idn\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-intl-idn',
         ),
-        'Symfony\\Polyfill\\Intl\\Grapheme\\' =>
+        'Symfony\\Polyfill\\Intl\\Grapheme\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme',
         ),
-        'Symfony\\Polyfill\\Ctype\\' =>
+        'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
-        'Symfony\\Contracts\\Translation\\' =>
+        'Symfony\\Contracts\\Translation\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/translation-contracts',
         ),
-        'Symfony\\Contracts\\Service\\' =>
+        'Symfony\\Contracts\\Service\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/service-contracts',
         ),
-        'Symfony\\Contracts\\EventDispatcher\\' =>
+        'Symfony\\Contracts\\EventDispatcher\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher-contracts',
         ),
-        'Symfony\\Component\\Yaml\\' =>
+        'Symfony\\Component\\Yaml\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
-        'Symfony\\Component\\VarDumper\\' =>
+        'Symfony\\Component\\VarDumper\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
         ),
-        'Symfony\\Component\\Uid\\' =>
+        'Symfony\\Component\\Uid\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/uid',
         ),
-        'Symfony\\Component\\Translation\\' =>
+        'Symfony\\Component\\Translation\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/translation',
         ),
-        'Symfony\\Component\\String\\' =>
+        'Symfony\\Component\\String\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/string',
         ),
-        'Symfony\\Component\\Routing\\' =>
+        'Symfony\\Component\\Routing\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/routing',
         ),
-        'Symfony\\Component\\Process\\' =>
+        'Symfony\\Component\\Process\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/process',
         ),
-        'Symfony\\Component\\Mime\\' =>
+        'Symfony\\Component\\Mime\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/mime',
         ),
-        'Symfony\\Component\\Mailer\\' =>
+        'Symfony\\Component\\Mailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/mailer',
         ),
-        'Symfony\\Component\\HttpKernel\\' =>
+        'Symfony\\Component\\HttpKernel\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/http-kernel',
         ),
-        'Symfony\\Component\\HttpFoundation\\' =>
+        'Symfony\\Component\\HttpFoundation\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/http-foundation',
         ),
-        'Symfony\\Component\\Finder\\' =>
+        'Symfony\\Component\\Finder\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/finder',
         ),
-        'Symfony\\Component\\EventDispatcher\\' =>
+        'Symfony\\Component\\EventDispatcher\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
         ),
-        'Symfony\\Component\\ErrorHandler\\' =>
+        'Symfony\\Component\\ErrorHandler\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/error-handler',
         ),
-        'Symfony\\Component\\CssSelector\\' =>
+        'Symfony\\Component\\CssSelector\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/css-selector',
         ),
-        'Symfony\\Component\\Console\\' =>
+        'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
-        'Symfony\\Component\\Clock\\' =>
+        'Symfony\\Component\\Clock\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/clock',
         ),
-        'Ramsey\\Uuid\\' =>
+        'Spatie\\TemporaryDirectory\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/temporary-directory/src',
+        ),
+        'Spatie\\MediaLibrary\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src',
+        ),
+        'Spatie\\LaravelPackageTools\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-package-tools/src',
+        ),
+        'Spatie\\Image\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/image/src',
+        ),
+        'Spatie\\ImageOptimizer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/image-optimizer/src',
+        ),
+        'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
         ),
-        'Ramsey\\Collection\\' =>
+        'Ramsey\\Collection\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/collection/src',
         ),
-        'Psy\\' =>
+        'Psy\\' => 
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src',
         ),
-        'Psr\\SimpleCache\\' =>
+        'Psr\\SimpleCache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
         ),
-        'Psr\\Log\\' =>
+        'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
         ),
-        'Psr\\Http\\Message\\' =>
+        'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-factory/src',
             1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
-        'Psr\\Http\\Client\\' =>
+        'Psr\\Http\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-client/src',
         ),
-        'Psr\\EventDispatcher\\' =>
+        'Psr\\EventDispatcher\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/event-dispatcher/src',
         ),
-        'Psr\\Container\\' =>
+        'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
-        'Psr\\Clock\\' =>
+        'Psr\\Clock\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/clock/src',
         ),
-        'PragmaRX\\Google2FA\\' =>
+        'PragmaRX\\Google2FA\\' => 
         array (
             0 => __DIR__ . '/..' . '/pragmarx/google2fa/src',
         ),
-        'PhpParser\\' =>
+        'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
-        'PhpOption\\' =>
+        'PhpOption\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
         ),
-        'Pest\\Profanity\\' =>
+        'Pest\\Profanity\\' => 
         array (
             0 => __DIR__ . '/..' . '/pestphp/pest-plugin-profanity/src',
         ),
-        'Pest\\Plugin\\' =>
+        'Pest\\Plugin\\' => 
         array (
             0 => __DIR__ . '/..' . '/pestphp/pest-plugin/src',
         ),
-        'Pest\\Mutate\\' =>
+        'Pest\\Mutate\\' => 
         array (
             0 => __DIR__ . '/..' . '/pestphp/pest-plugin-mutate/src',
         ),
-        'Pest\\Laravel\\' =>
+        'Pest\\Laravel\\' => 
         array (
             0 => __DIR__ . '/..' . '/pestphp/pest-plugin-laravel/src',
         ),
-        'Pest\\Arch\\' =>
+        'Pest\\Arch\\' => 
         array (
             0 => __DIR__ . '/..' . '/pestphp/pest-plugin-arch/src',
         ),
-        'Pest\\' =>
+        'Pest\\' => 
         array (
             0 => __DIR__ . '/..' . '/pestphp/pest/src',
         ),
-        'ParagonIE\\ConstantTime\\' =>
+        'ParagonIE\\ConstantTime\\' => 
         array (
             0 => __DIR__ . '/..' . '/paragonie/constant_time_encoding/src',
         ),
-        'ParaTest\\' =>
+        'ParaTest\\' => 
         array (
             0 => __DIR__ . '/..' . '/brianium/paratest/src',
         ),
-        'PHPUnit\\Architecture\\' =>
+        'PHPUnit\\Architecture\\' => 
         array (
             0 => __DIR__ . '/..' . '/ta-tikoma/phpunit-architecture-test/src',
         ),
-        'PHPStan\\PhpDocParser\\' =>
+        'PHPStan\\PhpDocParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src',
         ),
-        'NunoMaduro\\Collision\\' =>
+        'NunoMaduro\\Collision\\' => 
         array (
             0 => __DIR__ . '/..' . '/nunomaduro/collision/src',
         ),
-        'Nette\\' =>
+        'Nette\\' => 
         array (
             0 => __DIR__ . '/..' . '/nette/schema/src',
             1 => __DIR__ . '/..' . '/nette/utils/src',
         ),
-        'Monolog\\' =>
+        'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
-        'Mockery\\' =>
+        'Mockery\\' => 
         array (
             0 => __DIR__ . '/..' . '/mockery/mockery/library/Mockery',
         ),
-        'League\\Uri\\' =>
+        'League\\Uri\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/uri',
             1 => __DIR__ . '/..' . '/league/uri-interfaces',
         ),
-        'League\\MimeTypeDetection\\' =>
+        'League\\MimeTypeDetection\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/mime-type-detection/src',
         ),
-        'League\\Flysystem\\Local\\' =>
+        'League\\Flysystem\\Local\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/flysystem-local',
         ),
-        'League\\Flysystem\\' =>
+        'League\\Flysystem\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
         ),
-        'League\\Config\\' =>
+        'League\\Config\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/config/src',
         ),
-        'League\\CommonMark\\' =>
+        'League\\CommonMark\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/commonmark/src',
         ),
-        'Laravel\\Wayfinder\\' =>
+        'Laravel\\Wayfinder\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/wayfinder/src',
         ),
-        'Laravel\\Tinker\\' =>
+        'Laravel\\Tinker\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
-        'Laravel\\SerializableClosure\\' =>
+        'Laravel\\SerializableClosure\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/serializable-closure/src',
         ),
-        'Laravel\\Sail\\' =>
+        'Laravel\\Sail\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/sail/src',
         ),
-        'Laravel\\Prompts\\' =>
+        'Laravel\\Prompts\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/prompts/src',
         ),
-        'Laravel\\Pail\\' =>
+        'Laravel\\Pail\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/pail/src',
         ),
-        'Laravel\\Fortify\\' =>
+        'Laravel\\Fortify\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/fortify/src',
         ),
-        'Jean85\\' =>
+        'Jean85\\' => 
         array (
             0 => __DIR__ . '/..' . '/jean85/pretty-package-versions/src',
         ),
-        'Inertia\\' =>
+        'Inertia\\' => 
         array (
             0 => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src',
         ),
-        'Illuminate\\Support\\' =>
+        'Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Macroable',
             1 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections',
             2 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Conditionable',
+            3 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Reflection',
         ),
-        'Illuminate\\' =>
+        'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
-        'GuzzleHttp\\UriTemplate\\' =>
+        'GuzzleHttp\\UriTemplate\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/uri-template/src',
         ),
-        'GuzzleHttp\\Psr7\\' =>
+        'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
-        'GuzzleHttp\\Promise\\' =>
+        'GuzzleHttp\\Promise\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
         ),
-        'GuzzleHttp\\' =>
+        'GuzzleHttp\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
-        'GrahamCampbell\\ResultType\\' =>
+        'GrahamCampbell\\ResultType\\' => 
         array (
             0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
         ),
-        'Fruitcake\\Cors\\' =>
+        'Fruitcake\\Cors\\' => 
         array (
             0 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
         ),
-        'Fidry\\CpuCoreCounter\\' =>
+        'Fidry\\CpuCoreCounter\\' => 
         array (
             0 => __DIR__ . '/..' . '/fidry/cpu-core-counter/src',
         ),
-        'Faker\\' =>
+        'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fakerphp/faker/src/Faker',
         ),
-        'Egulias\\EmailValidator\\' =>
+        'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
         ),
-        'Dotenv\\' =>
+        'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
-        'Doctrine\\Inflector\\' =>
+        'Doctrine\\Inflector\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/src',
         ),
-        'Doctrine\\Deprecations\\' =>
+        'Doctrine\\Deprecations\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/deprecations/src',
         ),
-        'Doctrine\\Common\\Lexer\\' =>
+        'Doctrine\\Common\\Lexer\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/lexer/src',
         ),
-        'Dflydev\\DotAccessData\\' =>
+        'Dflydev\\DotAccessData\\' => 
         array (
             0 => __DIR__ . '/..' . '/dflydev/dot-access-data/src',
         ),
-        'DeepCopy\\' =>
+        'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
-        'Database\\Seeders\\' =>
+        'Database\\Seeders\\' => 
         array (
             0 => __DIR__ . '/../..' . '/database/seeders',
             1 => __DIR__ . '/..' . '/laravel/pint/database/seeders',
         ),
-        'Database\\Factories\\' =>
+        'Database\\Factories\\' => 
         array (
             0 => __DIR__ . '/../..' . '/database/factories',
             1 => __DIR__ . '/..' . '/laravel/pint/database/factories',
         ),
-        'DASPRiD\\Enum\\' =>
+        'DASPRiD\\Enum\\' => 
         array (
             0 => __DIR__ . '/..' . '/dasprid/enum/src',
         ),
-        'Cron\\' =>
+        'Cron\\' => 
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
-        'Carbon\\Doctrine\\' =>
+        'Composer\\Semver\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/semver/src',
+        ),
+        'Carbon\\Doctrine\\' => 
         array (
             0 => __DIR__ . '/..' . '/carbonphp/carbon-doctrine-types/src/Carbon/Doctrine',
         ),
-        'Carbon\\' =>
+        'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
-        'Brick\\Math\\' =>
+        'Brick\\Math\\' => 
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
         ),
-        'BaconQrCode\\' =>
+        'BaconQrCode\\' => 
         array (
             0 => __DIR__ . '/..' . '/bacon/bacon-qr-code/src',
         ),
-        'App\\' =>
+        'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
             1 => __DIR__ . '/..' . '/laravel/pint/app',
@@ -650,17 +690,43 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'App\\Actions\\Fortify\\CreateNewUser' => __DIR__ . '/../..' . '/app/Actions/Fortify/CreateNewUser.php',
         'App\\Actions\\Fortify\\PasswordValidationRules' => __DIR__ . '/../..' . '/app/Actions/Fortify/PasswordValidationRules.php',
         'App\\Actions\\Fortify\\ResetUserPassword' => __DIR__ . '/../..' . '/app/Actions/Fortify/ResetUserPassword.php',
+        'App\\Http\\Controllers\\BlogController' => __DIR__ . '/../..' . '/app/Http/Controllers/BlogController.php',
+        'App\\Http\\Controllers\\BoardMemberController' => __DIR__ . '/../..' . '/app/Http/Controllers/BoardMemberController.php',
+        'App\\Http\\Controllers\\ClientController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClientController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\EventController' => __DIR__ . '/../..' . '/app/Http/Controllers/EventController.php',
+        'App\\Http\\Controllers\\MenuController' => __DIR__ . '/../..' . '/app/Http/Controllers/MenuController.php',
+        'App\\Http\\Controllers\\PageController' => __DIR__ . '/../..' . '/app/Http/Controllers/PageController.php',
+        'App\\Http\\Controllers\\PartnerController' => __DIR__ . '/../..' . '/app/Http/Controllers/PartnerController.php',
+        'App\\Http\\Controllers\\ProjectController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProjectController.php',
+        'App\\Http\\Controllers\\ServiceController' => __DIR__ . '/../..' . '/app/Http/Controllers/ServiceController.php',
         'App\\Http\\Controllers\\Settings\\PasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Settings/PasswordController.php',
         'App\\Http\\Controllers\\Settings\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/Settings/ProfileController.php',
         'App\\Http\\Controllers\\Settings\\TwoFactorAuthenticationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Settings/TwoFactorAuthenticationController.php',
+        'App\\Http\\Controllers\\ThemeController' => __DIR__ . '/../..' . '/app/Http/Controllers/ThemeController.php',
         'App\\Http\\Middleware\\HandleAppearance' => __DIR__ . '/../..' . '/app/Http/Middleware/HandleAppearance.php',
         'App\\Http\\Middleware\\HandleInertiaRequests' => __DIR__ . '/../..' . '/app/Http/Middleware/HandleInertiaRequests.php',
         'App\\Http\\Requests\\Settings\\ProfileUpdateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Settings/ProfileUpdateRequest.php',
         'App\\Http\\Requests\\Settings\\TwoFactorAuthenticationRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Settings/TwoFactorAuthenticationRequest.php',
+        'App\\Models\\Blog' => __DIR__ . '/../..' . '/app/Models/Blog.php',
+        'App\\Models\\BoardMember' => __DIR__ . '/../..' . '/app/Models/BoardMember.php',
+        'App\\Models\\Client' => __DIR__ . '/../..' . '/app/Models/Client.php',
+        'App\\Models\\Company' => __DIR__ . '/../..' . '/app/Models/Company.php',
+        'App\\Models\\Event' => __DIR__ . '/../..' . '/app/Models/Event.php',
+        'App\\Models\\Faq' => __DIR__ . '/../..' . '/app/Models/Faq.php',
+        'App\\Models\\Media' => __DIR__ . '/../..' . '/app/Models/Media.php',
+        'App\\Models\\Menu' => __DIR__ . '/../..' . '/app/Models/Menu.php',
+        'App\\Models\\Page' => __DIR__ . '/../..' . '/app/Models/Page.php',
+        'App\\Models\\Partner' => __DIR__ . '/../..' . '/app/Models/Partner.php',
+        'App\\Models\\Project' => __DIR__ . '/../..' . '/app/Models/Project.php',
+        'App\\Models\\ProjectCategory' => __DIR__ . '/../..' . '/app/Models/ProjectCategory.php',
+        'App\\Models\\Section' => __DIR__ . '/../..' . '/app/Models/Section.php',
+        'App\\Models\\Service' => __DIR__ . '/../..' . '/app/Models/Service.php',
+        'App\\Models\\Theme' => __DIR__ . '/../..' . '/app/Models/Theme.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\FortifyServiceProvider' => __DIR__ . '/../..' . '/app/Providers/FortifyServiceProvider.php',
+        'App\\Services\\ThemeService' => __DIR__ . '/../..' . '/app/Services/ThemeService.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'BaconQrCode\\Common\\BitArray' => __DIR__ . '/..' . '/bacon/bacon-qr-code/src/Common/BitArray.php',
         'BaconQrCode\\Common\\BitMatrix' => __DIR__ . '/..' . '/bacon/bacon-qr-code/src/Common/BitMatrix.php',
@@ -831,6 +897,18 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'Carbon\\WeekDay' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/WeekDay.php',
         'Carbon\\WrapperClock' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/WrapperClock.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Composer\\Semver\\Comparator' => __DIR__ . '/..' . '/composer/semver/src/Comparator.php',
+        'Composer\\Semver\\CompilingMatcher' => __DIR__ . '/..' . '/composer/semver/src/CompilingMatcher.php',
+        'Composer\\Semver\\Constraint\\Bound' => __DIR__ . '/..' . '/composer/semver/src/Constraint/Bound.php',
+        'Composer\\Semver\\Constraint\\Constraint' => __DIR__ . '/..' . '/composer/semver/src/Constraint/Constraint.php',
+        'Composer\\Semver\\Constraint\\ConstraintInterface' => __DIR__ . '/..' . '/composer/semver/src/Constraint/ConstraintInterface.php',
+        'Composer\\Semver\\Constraint\\MatchAllConstraint' => __DIR__ . '/..' . '/composer/semver/src/Constraint/MatchAllConstraint.php',
+        'Composer\\Semver\\Constraint\\MatchNoneConstraint' => __DIR__ . '/..' . '/composer/semver/src/Constraint/MatchNoneConstraint.php',
+        'Composer\\Semver\\Constraint\\MultiConstraint' => __DIR__ . '/..' . '/composer/semver/src/Constraint/MultiConstraint.php',
+        'Composer\\Semver\\Interval' => __DIR__ . '/..' . '/composer/semver/src/Interval.php',
+        'Composer\\Semver\\Intervals' => __DIR__ . '/..' . '/composer/semver/src/Intervals.php',
+        'Composer\\Semver\\Semver' => __DIR__ . '/..' . '/composer/semver/src/Semver.php',
+        'Composer\\Semver\\VersionParser' => __DIR__ . '/..' . '/composer/semver/src/VersionParser.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',
@@ -852,7 +930,18 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'DASPRiD\\Enum\\Exception\\UnserializeNotSupportedException' => __DIR__ . '/..' . '/dasprid/enum/src/Exception/UnserializeNotSupportedException.php',
         'DASPRiD\\Enum\\NullValue' => __DIR__ . '/..' . '/dasprid/enum/src/NullValue.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
+        'Database\\Seeders\\BlogSeeder' => __DIR__ . '/../..' . '/database/seeders/BlogSeeder.php',
+        'Database\\Seeders\\BoardMemberSeeder' => __DIR__ . '/../..' . '/database/seeders/BoardMemberSeeder.php',
+        'Database\\Seeders\\ClientSeeder' => __DIR__ . '/../..' . '/database/seeders/ClientSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\EventSeeder' => __DIR__ . '/../..' . '/database/seeders/EventSeeder.php',
+        'Database\\Seeders\\FaqSeeder' => __DIR__ . '/../..' . '/database/seeders/FaqSeeder.php',
+        'Database\\Seeders\\MenuSeeder' => __DIR__ . '/../..' . '/database/seeders/MenuSeeder.php',
+        'Database\\Seeders\\PageSeeder' => __DIR__ . '/../..' . '/database/seeders/PageSeeder.php',
+        'Database\\Seeders\\PartnerSeeder' => __DIR__ . '/../..' . '/database/seeders/PartnerSeeder.php',
+        'Database\\Seeders\\ProjectSeeder' => __DIR__ . '/../..' . '/database/seeders/ProjectSeeder.php',
+        'Database\\Seeders\\ServiceSeeder' => __DIR__ . '/../..' . '/database/seeders/ServiceSeeder.php',
+        'Database\\Seeders\\ThemeSeeder' => __DIR__ . '/../..' . '/database/seeders/ThemeSeeder.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
         'DateException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
         'DateInvalidOperationException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateInvalidOperationException.php',
@@ -2490,6 +2579,7 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'Illuminate\\Foundation\\Console\\PolicyMakeCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Console/PolicyMakeCommand.php',
         'Illuminate\\Foundation\\Console\\ProviderMakeCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Console/ProviderMakeCommand.php',
         'Illuminate\\Foundation\\Console\\QueuedCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Console/QueuedCommand.php',
+        'Illuminate\\Foundation\\Console\\ReloadCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Console/ReloadCommand.php',
         'Illuminate\\Foundation\\Console\\RequestMakeCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Console/RequestMakeCommand.php',
         'Illuminate\\Foundation\\Console\\ResourceMakeCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Console/ResourceMakeCommand.php',
         'Illuminate\\Foundation\\Console\\RouteCacheCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Console/RouteCacheCommand.php',
@@ -2615,6 +2705,8 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'Illuminate\\Http\\Client\\HttpClientException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Client/HttpClientException.php',
         'Illuminate\\Http\\Client\\PendingRequest' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Client/PendingRequest.php',
         'Illuminate\\Http\\Client\\Pool' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Client/Pool.php',
+        'Illuminate\\Http\\Client\\Promises\\FluentPromise' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Client/Promises/FluentPromise.php',
+        'Illuminate\\Http\\Client\\Promises\\LazyPromise' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Client/Promises/LazyPromise.php',
         'Illuminate\\Http\\Client\\Request' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Client/Request.php',
         'Illuminate\\Http\\Client\\RequestException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Client/RequestException.php',
         'Illuminate\\Http\\Client\\Response' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Client/Response.php',
@@ -3024,7 +3116,7 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'Illuminate\\Support\\Optional' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Optional.php',
         'Illuminate\\Support\\Pluralizer' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Pluralizer.php',
         'Illuminate\\Support\\ProcessUtils' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/ProcessUtils.php',
-        'Illuminate\\Support\\Reflector' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Reflector.php',
+        'Illuminate\\Support\\Reflector' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Reflection/Reflector.php',
         'Illuminate\\Support\\ServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/ServiceProvider.php',
         'Illuminate\\Support\\Sleep' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Sleep.php',
         'Illuminate\\Support\\Str' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Str.php',
@@ -3051,7 +3143,7 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'Illuminate\\Support\\Traits\\InteractsWithData' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Traits/InteractsWithData.php',
         'Illuminate\\Support\\Traits\\Localizable' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Traits/Localizable.php',
         'Illuminate\\Support\\Traits\\Macroable' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Macroable/Traits/Macroable.php',
-        'Illuminate\\Support\\Traits\\ReflectsClosures' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Traits/ReflectsClosures.php',
+        'Illuminate\\Support\\Traits\\ReflectsClosures' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Reflection/Traits/ReflectsClosures.php',
         'Illuminate\\Support\\Traits\\Tappable' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Traits/Tappable.php',
         'Illuminate\\Support\\Traits\\TransformsToResourceCollection' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/Traits/TransformsToResourceCollection.php',
         'Illuminate\\Support\\Uri' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Uri.php',
@@ -3205,17 +3297,22 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'Inertia\\MergesProps' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/MergesProps.php',
         'Inertia\\Middleware' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/Middleware.php',
         'Inertia\\Middleware\\EncryptHistory' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/Middleware/EncryptHistory.php',
+        'Inertia\\OnceProp' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/OnceProp.php',
+        'Inertia\\Onceable' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/Onceable.php',
         'Inertia\\OptionalProp' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/OptionalProp.php',
         'Inertia\\PropertyContext' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/PropertyContext.php',
         'Inertia\\ProvidesInertiaProperties' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/ProvidesInertiaProperties.php',
         'Inertia\\ProvidesInertiaProperty' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/ProvidesInertiaProperty.php',
         'Inertia\\ProvidesScrollMetadata' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/ProvidesScrollMetadata.php',
         'Inertia\\RenderContext' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/RenderContext.php',
+        'Inertia\\ResolvesCallables' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/ResolvesCallables.php',
+        'Inertia\\ResolvesOnce' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/ResolvesOnce.php',
         'Inertia\\Response' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/Response.php',
         'Inertia\\ResponseFactory' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/ResponseFactory.php',
         'Inertia\\ScrollMetadata' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/ScrollMetadata.php',
         'Inertia\\ScrollProp' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/ScrollProp.php',
         'Inertia\\ServiceProvider' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/ServiceProvider.php',
+        'Inertia\\SessionKey' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/SessionKey.php',
         'Inertia\\Ssr\\BundleDetector' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/Ssr/BundleDetector.php',
         'Inertia\\Ssr\\Gateway' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/Ssr/Gateway.php',
         'Inertia\\Ssr\\HasHealthCheck' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/Ssr/HasHealthCheck.php',
@@ -3312,6 +3409,7 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'Laravel\\Fortify\\Http\\Controllers\\TwoFactorSecretKeyController' => __DIR__ . '/..' . '/laravel/fortify/src/Http/Controllers/TwoFactorSecretKeyController.php',
         'Laravel\\Fortify\\Http\\Controllers\\VerifyEmailController' => __DIR__ . '/..' . '/laravel/fortify/src/Http/Controllers/VerifyEmailController.php',
         'Laravel\\Fortify\\Http\\Requests\\LoginRequest' => __DIR__ . '/..' . '/laravel/fortify/src/Http/Requests/LoginRequest.php',
+        'Laravel\\Fortify\\Http\\Requests\\SendPasswordResetLinkRequest' => __DIR__ . '/..' . '/laravel/fortify/src/Http/Requests/SendPasswordResetLinkRequest.php',
         'Laravel\\Fortify\\Http\\Requests\\TwoFactorLoginRequest' => __DIR__ . '/..' . '/laravel/fortify/src/Http/Requests/TwoFactorLoginRequest.php',
         'Laravel\\Fortify\\Http\\Requests\\VerifyEmailRequest' => __DIR__ . '/..' . '/laravel/fortify/src/Http/Requests/VerifyEmailRequest.php',
         'Laravel\\Fortify\\Http\\Responses\\EmailVerificationNotificationSentResponse' => __DIR__ . '/..' . '/laravel/fortify/src/Http/Responses/EmailVerificationNotificationSentResponse.php',
@@ -3844,6 +3942,9 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'League\\Uri\\Exceptions\\OffsetOutOfBounds' => __DIR__ . '/..' . '/league/uri-interfaces/Exceptions/OffsetOutOfBounds.php',
         'League\\Uri\\Exceptions\\SyntaxError' => __DIR__ . '/..' . '/league/uri-interfaces/Exceptions/SyntaxError.php',
         'League\\Uri\\FeatureDetection' => __DIR__ . '/..' . '/league/uri-interfaces/FeatureDetection.php',
+        'League\\Uri\\HostFormat' => __DIR__ . '/..' . '/league/uri-interfaces/HostFormat.php',
+        'League\\Uri\\HostRecord' => __DIR__ . '/..' . '/league/uri-interfaces/HostRecord.php',
+        'League\\Uri\\HostType' => __DIR__ . '/..' . '/league/uri-interfaces/HostType.php',
         'League\\Uri\\Http' => __DIR__ . '/..' . '/league/uri/Http.php',
         'League\\Uri\\HttpFactory' => __DIR__ . '/..' . '/league/uri/HttpFactory.php',
         'League\\Uri\\IPv4\\BCMathCalculator' => __DIR__ . '/..' . '/league/uri-interfaces/IPv4/BCMathCalculator.php',
@@ -4555,6 +4656,7 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/AssertionFailedError.php',
         'PHPUnit\\Framework\\Attributes\\After' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Attributes/After.php',
         'PHPUnit\\Framework\\Attributes\\AfterClass' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Attributes/AfterClass.php',
+        'PHPUnit\\Framework\\Attributes\\AllowMockObjectsWithoutExpectations' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Attributes/AllowMockObjectsWithoutExpectations.php',
         'PHPUnit\\Framework\\Attributes\\BackupGlobals' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Attributes/BackupGlobals.php',
         'PHPUnit\\Framework\\Attributes\\BackupStaticProperties' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Attributes/BackupStaticProperties.php',
         'PHPUnit\\Framework\\Attributes\\Before' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Attributes/Before.php',
@@ -4765,7 +4867,9 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'PHPUnit\\Framework\\MockObject\\Stub\\ReturnStub' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/Runtime/Stub/ReturnStub.php',
         'PHPUnit\\Framework\\MockObject\\Stub\\ReturnValueMap' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/Runtime/Stub/ReturnValueMap.php',
         'PHPUnit\\Framework\\MockObject\\Stub\\Stub' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/Runtime/Stub/Stub.php',
+        'PHPUnit\\Framework\\MockObject\\TestDoubleBuilder' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/TestDoubleBuilder.php',
         'PHPUnit\\Framework\\MockObject\\TestDoubleState' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/Runtime/Api/TestDoubleState.php',
+        'PHPUnit\\Framework\\MockObject\\TestStubBuilder' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/TestStubBuilder.php',
         'PHPUnit\\Framework\\NativeType' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/NativeType.php',
         'PHPUnit\\Framework\\NoChildTestSuiteException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/NoChildTestSuiteException.php',
         'PHPUnit\\Framework\\PhptAssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/PhptAssertionFailedError.php',
@@ -4882,6 +4986,7 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'PHPUnit\\Logging\\TestDox\\TestTriggeredWarningSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Logging/TestDox/TestResult/Subscriber/TestTriggeredWarningSubscriber.php',
         'PHPUnit\\Metadata\\After' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/After.php',
         'PHPUnit\\Metadata\\AfterClass' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/AfterClass.php',
+        'PHPUnit\\Metadata\\AllowMockObjectsWithoutExpectations' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/AllowMockObjectsWithoutExpectations.php',
         'PHPUnit\\Metadata\\Api\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/Api/CodeCoverage.php',
         'PHPUnit\\Metadata\\Api\\DataProvider' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/Api/DataProvider.php',
         'PHPUnit\\Metadata\\Api\\Dependencies' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/Api/Dependencies.php',
@@ -5177,6 +5282,7 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'PHPUnit\\TextUI\\Output\\Default\\ProgressPrinter\\TestTriggeredPhpNoticeSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/Output/Default/ProgressPrinter/Subscriber/TestTriggeredPhpNoticeSubscriber.php',
         'PHPUnit\\TextUI\\Output\\Default\\ProgressPrinter\\TestTriggeredPhpWarningSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/Output/Default/ProgressPrinter/Subscriber/TestTriggeredPhpWarningSubscriber.php',
         'PHPUnit\\TextUI\\Output\\Default\\ProgressPrinter\\TestTriggeredPhpunitDeprecationSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/Output/Default/ProgressPrinter/Subscriber/TestTriggeredPhpunitDeprecationSubscriber.php',
+        'PHPUnit\\TextUI\\Output\\Default\\ProgressPrinter\\TestTriggeredPhpunitNoticeSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/Output/Default/ProgressPrinter/Subscriber/TestTriggeredPhpunitNoticeSubscriber.php',
         'PHPUnit\\TextUI\\Output\\Default\\ProgressPrinter\\TestTriggeredPhpunitWarningSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/Output/Default/ProgressPrinter/Subscriber/TestTriggeredPhpunitWarningSubscriber.php',
         'PHPUnit\\TextUI\\Output\\Default\\ProgressPrinter\\TestTriggeredWarningSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/Output/Default/ProgressPrinter/Subscriber/TestTriggeredWarningSubscriber.php',
         'PHPUnit\\TextUI\\Output\\Default\\ResultPrinter' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/Output/Default/ResultPrinter.php',
@@ -6285,6 +6391,7 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'Psy\\Command\\TraceCommand' => __DIR__ . '/..' . '/psy/psysh/src/Command/TraceCommand.php',
         'Psy\\Command\\WhereamiCommand' => __DIR__ . '/..' . '/psy/psysh/src/Command/WhereamiCommand.php',
         'Psy\\Command\\WtfCommand' => __DIR__ . '/..' . '/psy/psysh/src/Command/WtfCommand.php',
+        'Psy\\Command\\YoloCommand' => __DIR__ . '/..' . '/psy/psysh/src/Command/YoloCommand.php',
         'Psy\\ConfigPaths' => __DIR__ . '/..' . '/psy/psysh/src/ConfigPaths.php',
         'Psy\\Configuration' => __DIR__ . '/..' . '/psy/psysh/src/Configuration.php',
         'Psy\\Context' => __DIR__ . '/..' . '/psy/psysh/src/Context.php',
@@ -6310,6 +6417,8 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'Psy\\ExecutionLoop\\ProcessForker' => __DIR__ . '/..' . '/psy/psysh/src/ExecutionLoop/ProcessForker.php',
         'Psy\\ExecutionLoop\\RunkitReloader' => __DIR__ . '/..' . '/psy/psysh/src/ExecutionLoop/RunkitReloader.php',
         'Psy\\ExecutionLoop\\SignalHandler' => __DIR__ . '/..' . '/psy/psysh/src/ExecutionLoop/SignalHandler.php',
+        'Psy\\ExecutionLoop\\UopzReloader' => __DIR__ . '/..' . '/psy/psysh/src/ExecutionLoop/UopzReloader.php',
+        'Psy\\ExecutionLoop\\UopzReloaderVisitor' => __DIR__ . '/..' . '/psy/psysh/src/ExecutionLoop/UopzReloaderVisitor.php',
         'Psy\\Formatter\\CodeFormatter' => __DIR__ . '/..' . '/psy/psysh/src/Formatter/CodeFormatter.php',
         'Psy\\Formatter\\DocblockFormatter' => __DIR__ . '/..' . '/psy/psysh/src/Formatter/DocblockFormatter.php',
         'Psy\\Formatter\\LinkFormatter' => __DIR__ . '/..' . '/psy/psysh/src/Formatter/LinkFormatter.php',
@@ -6331,6 +6440,7 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'Psy\\Manual\\ManualInterface' => __DIR__ . '/..' . '/psy/psysh/src/Manual/ManualInterface.php',
         'Psy\\Manual\\V2Manual' => __DIR__ . '/..' . '/psy/psysh/src/Manual/V2Manual.php',
         'Psy\\Manual\\V3Manual' => __DIR__ . '/..' . '/psy/psysh/src/Manual/V3Manual.php',
+        'Psy\\OutputAware' => __DIR__ . '/..' . '/psy/psysh/src/OutputAware.php',
         'Psy\\Output\\OutputPager' => __DIR__ . '/..' . '/psy/psysh/src/Output/OutputPager.php',
         'Psy\\Output\\PassthruPager' => __DIR__ . '/..' . '/psy/psysh/src/Output/PassthruPager.php',
         'Psy\\Output\\ProcOutputPager' => __DIR__ . '/..' . '/psy/psysh/src/Output/ProcOutputPager.php',
@@ -6815,6 +6925,186 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/type/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/type/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Spatie\\ImageOptimizer\\DummyLogger' => __DIR__ . '/..' . '/spatie/image-optimizer/src/DummyLogger.php',
+        'Spatie\\ImageOptimizer\\Image' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Image.php',
+        'Spatie\\ImageOptimizer\\Optimizer' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Optimizer.php',
+        'Spatie\\ImageOptimizer\\OptimizerChain' => __DIR__ . '/..' . '/spatie/image-optimizer/src/OptimizerChain.php',
+        'Spatie\\ImageOptimizer\\OptimizerChainFactory' => __DIR__ . '/..' . '/spatie/image-optimizer/src/OptimizerChainFactory.php',
+        'Spatie\\ImageOptimizer\\Optimizers\\Avifenc' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Optimizers/Avifenc.php',
+        'Spatie\\ImageOptimizer\\Optimizers\\BaseOptimizer' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Optimizers/BaseOptimizer.php',
+        'Spatie\\ImageOptimizer\\Optimizers\\Cwebp' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Optimizers/Cwebp.php',
+        'Spatie\\ImageOptimizer\\Optimizers\\Gifsicle' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Optimizers/Gifsicle.php',
+        'Spatie\\ImageOptimizer\\Optimizers\\Jpegoptim' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Optimizers/Jpegoptim.php',
+        'Spatie\\ImageOptimizer\\Optimizers\\Optipng' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Optimizers/Optipng.php',
+        'Spatie\\ImageOptimizer\\Optimizers\\Pngquant' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Optimizers/Pngquant.php',
+        'Spatie\\ImageOptimizer\\Optimizers\\Svgo' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Optimizers/Svgo.php',
+        'Spatie\\Image\\Drivers\\Color' => __DIR__ . '/..' . '/spatie/image/src/Drivers/Color.php',
+        'Spatie\\Image\\Drivers\\Concerns\\AddsWatermark' => __DIR__ . '/..' . '/spatie/image/src/Drivers/Concerns/AddsWatermark.php',
+        'Spatie\\Image\\Drivers\\Concerns\\CalculatesCropOffsets' => __DIR__ . '/..' . '/spatie/image/src/Drivers/Concerns/CalculatesCropOffsets.php',
+        'Spatie\\Image\\Drivers\\Concerns\\CalculatesFocalCropAndResizeCoordinates' => __DIR__ . '/..' . '/spatie/image/src/Drivers/Concerns/CalculatesFocalCropAndResizeCoordinates.php',
+        'Spatie\\Image\\Drivers\\Concerns\\CalculatesFocalCropCoordinates' => __DIR__ . '/..' . '/spatie/image/src/Drivers/Concerns/CalculatesFocalCropCoordinates.php',
+        'Spatie\\Image\\Drivers\\Concerns\\GetsOrientationFromExif' => __DIR__ . '/..' . '/spatie/image/src/Drivers/Concerns/GetsOrientationFromExif.php',
+        'Spatie\\Image\\Drivers\\Concerns\\PerformsFitCrops' => __DIR__ . '/..' . '/spatie/image/src/Drivers/Concerns/PerformsFitCrops.php',
+        'Spatie\\Image\\Drivers\\Concerns\\PerformsOptimizations' => __DIR__ . '/..' . '/spatie/image/src/Drivers/Concerns/PerformsOptimizations.php',
+        'Spatie\\Image\\Drivers\\Concerns\\ValidatesArguments' => __DIR__ . '/..' . '/spatie/image/src/Drivers/Concerns/ValidatesArguments.php',
+        'Spatie\\Image\\Drivers\\Gd\\GdColor' => __DIR__ . '/..' . '/spatie/image/src/Drivers/Gd/GdColor.php',
+        'Spatie\\Image\\Drivers\\Gd\\GdDriver' => __DIR__ . '/..' . '/spatie/image/src/Drivers/Gd/GdDriver.php',
+        'Spatie\\Image\\Drivers\\ImageDriver' => __DIR__ . '/..' . '/spatie/image/src/Drivers/ImageDriver.php',
+        'Spatie\\Image\\Drivers\\Imagick\\Helpers' => __DIR__ . '/..' . '/spatie/image/src/Drivers/Imagick/Helpers.php',
+        'Spatie\\Image\\Drivers\\Imagick\\ImagickColor' => __DIR__ . '/..' . '/spatie/image/src/Drivers/Imagick/ImagickColor.php',
+        'Spatie\\Image\\Drivers\\Imagick\\ImagickDriver' => __DIR__ . '/..' . '/spatie/image/src/Drivers/Imagick/ImagickDriver.php',
+        'Spatie\\Image\\Enums\\AlignPosition' => __DIR__ . '/..' . '/spatie/image/src/Enums/AlignPosition.php',
+        'Spatie\\Image\\Enums\\BorderType' => __DIR__ . '/..' . '/spatie/image/src/Enums/BorderType.php',
+        'Spatie\\Image\\Enums\\ColorFormat' => __DIR__ . '/..' . '/spatie/image/src/Enums/ColorFormat.php',
+        'Spatie\\Image\\Enums\\Constraint' => __DIR__ . '/..' . '/spatie/image/src/Enums/Constraint.php',
+        'Spatie\\Image\\Enums\\CropPosition' => __DIR__ . '/..' . '/spatie/image/src/Enums/CropPosition.php',
+        'Spatie\\Image\\Enums\\Fit' => __DIR__ . '/..' . '/spatie/image/src/Enums/Fit.php',
+        'Spatie\\Image\\Enums\\FlipDirection' => __DIR__ . '/..' . '/spatie/image/src/Enums/FlipDirection.php',
+        'Spatie\\Image\\Enums\\ImageDriver' => __DIR__ . '/..' . '/spatie/image/src/Enums/ImageDriver.php',
+        'Spatie\\Image\\Enums\\Orientation' => __DIR__ . '/..' . '/spatie/image/src/Enums/Orientation.php',
+        'Spatie\\Image\\Enums\\Unit' => __DIR__ . '/..' . '/spatie/image/src/Enums/Unit.php',
+        'Spatie\\Image\\Exceptions\\CannotResize' => __DIR__ . '/..' . '/spatie/image/src/Exceptions/CannotResize.php',
+        'Spatie\\Image\\Exceptions\\CouldNotLoadImage' => __DIR__ . '/..' . '/spatie/image/src/Exceptions/CouldNotLoadImage.php',
+        'Spatie\\Image\\Exceptions\\ImageMethodDoesNotExist' => __DIR__ . '/..' . '/spatie/image/src/Exceptions/ImageMethodDoesNotExist.php',
+        'Spatie\\Image\\Exceptions\\InvalidColor' => __DIR__ . '/..' . '/spatie/image/src/Exceptions/InvalidColor.php',
+        'Spatie\\Image\\Exceptions\\InvalidFont' => __DIR__ . '/..' . '/spatie/image/src/Exceptions/InvalidFont.php',
+        'Spatie\\Image\\Exceptions\\InvalidImageDriver' => __DIR__ . '/..' . '/spatie/image/src/Exceptions/InvalidImageDriver.php',
+        'Spatie\\Image\\Exceptions\\InvalidManipulation' => __DIR__ . '/..' . '/spatie/image/src/Exceptions/InvalidManipulation.php',
+        'Spatie\\Image\\Exceptions\\MissingParameter' => __DIR__ . '/..' . '/spatie/image/src/Exceptions/MissingParameter.php',
+        'Spatie\\Image\\Exceptions\\UnsupportedImageFormat' => __DIR__ . '/..' . '/spatie/image/src/Exceptions/UnsupportedImageFormat.php',
+        'Spatie\\Image\\Image' => __DIR__ . '/..' . '/spatie/image/src/Image.php',
+        'Spatie\\Image\\Point' => __DIR__ . '/..' . '/spatie/image/src/Point.php',
+        'Spatie\\Image\\Size' => __DIR__ . '/..' . '/spatie/image/src/Size.php',
+        'Spatie\\LaravelPackageTools\\Commands\\Concerns\\AskToRunMigrations' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Commands/Concerns/AskToRunMigrations.php',
+        'Spatie\\LaravelPackageTools\\Commands\\Concerns\\AskToStarRepoOnGitHub' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Commands/Concerns/AskToStarRepoOnGitHub.php',
+        'Spatie\\LaravelPackageTools\\Commands\\Concerns\\PublishesResources' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Commands/Concerns/PublishesResources.php',
+        'Spatie\\LaravelPackageTools\\Commands\\Concerns\\SupportsServiceProviderInApp' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Commands/Concerns/SupportsServiceProviderInApp.php',
+        'Spatie\\LaravelPackageTools\\Commands\\Concerns\\SupportsStartWithEndWith' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Commands/Concerns/SupportsStartWithEndWith.php',
+        'Spatie\\LaravelPackageTools\\Commands\\InstallCommand' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Commands/InstallCommand.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessAssets' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessAssets.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessBladeComponents' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessBladeComponents.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessCommands' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessCommands.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessConfigs' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessConfigs.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessInertia' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessInertia.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessMigrations' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessMigrations.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessRoutes' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessRoutes.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessServiceProviders' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessServiceProviders.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessTranslations' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessTranslations.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessViewComposers' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessViewComposers.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessViewSharedData' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessViewSharedData.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessViews' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessViews.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasAssets' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/Package/HasAssets.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasBladeComponents' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/Package/HasBladeComponents.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasCommands' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/Package/HasCommands.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasConfigs' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/Package/HasConfigs.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasInertia' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/Package/HasInertia.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasInstallCommand' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/Package/HasInstallCommand.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasMigrations' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/Package/HasMigrations.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasRoutes' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/Package/HasRoutes.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasServiceProviders' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/Package/HasServiceProviders.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasTranslations' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/Package/HasTranslations.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasViewComposers' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/Package/HasViewComposers.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasViewSharedData' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/Package/HasViewSharedData.php',
+        'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasViews' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Concerns/Package/HasViews.php',
+        'Spatie\\LaravelPackageTools\\Exceptions\\InvalidPackage' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Exceptions/InvalidPackage.php',
+        'Spatie\\LaravelPackageTools\\Package' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Package.php',
+        'Spatie\\LaravelPackageTools\\PackageServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/PackageServiceProvider.php',
+        'Spatie\\MediaLibrary\\Conversions\\Actions\\PerformConversionAction' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/Actions/PerformConversionAction.php',
+        'Spatie\\MediaLibrary\\Conversions\\Actions\\PerformManipulationsAction' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/Actions/PerformManipulationsAction.php',
+        'Spatie\\MediaLibrary\\Conversions\\Commands\\RegenerateCommand' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/Commands/RegenerateCommand.php',
+        'Spatie\\MediaLibrary\\Conversions\\Conversion' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/Conversion.php',
+        'Spatie\\MediaLibrary\\Conversions\\ConversionCollection' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/ConversionCollection.php',
+        'Spatie\\MediaLibrary\\Conversions\\Events\\ConversionHasBeenCompletedEvent' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/Events/ConversionHasBeenCompletedEvent.php',
+        'Spatie\\MediaLibrary\\Conversions\\Events\\ConversionWillStartEvent' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/Events/ConversionWillStartEvent.php',
+        'Spatie\\MediaLibrary\\Conversions\\FileManipulator' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/FileManipulator.php',
+        'Spatie\\MediaLibrary\\Conversions\\ImageGenerators\\Avif' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/ImageGenerators/Avif.php',
+        'Spatie\\MediaLibrary\\Conversions\\ImageGenerators\\Image' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/ImageGenerators/Image.php',
+        'Spatie\\MediaLibrary\\Conversions\\ImageGenerators\\ImageGenerator' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/ImageGenerators/ImageGenerator.php',
+        'Spatie\\MediaLibrary\\Conversions\\ImageGenerators\\ImageGeneratorFactory' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/ImageGenerators/ImageGeneratorFactory.php',
+        'Spatie\\MediaLibrary\\Conversions\\ImageGenerators\\Pdf' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/ImageGenerators/Pdf.php',
+        'Spatie\\MediaLibrary\\Conversions\\ImageGenerators\\Svg' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/ImageGenerators/Svg.php',
+        'Spatie\\MediaLibrary\\Conversions\\ImageGenerators\\Video' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/ImageGenerators/Video.php',
+        'Spatie\\MediaLibrary\\Conversions\\ImageGenerators\\Webp' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/ImageGenerators/Webp.php',
+        'Spatie\\MediaLibrary\\Conversions\\Jobs\\PerformConversionsJob' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/Jobs/PerformConversionsJob.php',
+        'Spatie\\MediaLibrary\\Conversions\\Manipulations' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Conversions/Manipulations.php',
+        'Spatie\\MediaLibrary\\Downloaders\\DefaultDownloader' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Downloaders/DefaultDownloader.php',
+        'Spatie\\MediaLibrary\\Downloaders\\Downloader' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Downloaders/Downloader.php',
+        'Spatie\\MediaLibrary\\Downloaders\\HttpFacadeDownloader' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Downloaders/HttpFacadeDownloader.php',
+        'Spatie\\MediaLibrary\\Enums\\CollectionPosition' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Enums/CollectionPosition.php',
+        'Spatie\\MediaLibrary\\HasMedia' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/HasMedia.php',
+        'Spatie\\MediaLibrary\\InteractsWithMedia' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/InteractsWithMedia.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Commands\\CleanCommand' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Commands/CleanCommand.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Commands\\ClearCommand' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Commands/ClearCommand.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Contracts\\MediaLibraryRequest' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Contracts/MediaLibraryRequest.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Events\\CollectionHasBeenClearedEvent' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Events/CollectionHasBeenClearedEvent.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Events\\MediaHasBeenAddedEvent' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Events/MediaHasBeenAddedEvent.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\DiskCannotBeAccessed' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/DiskCannotBeAccessed.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\DiskDoesNotExist' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/DiskDoesNotExist.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\FileCannotBeAdded' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/FileCannotBeAdded.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\FileDoesNotExist' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/FileDoesNotExist.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\FileIsTooBig' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/FileIsTooBig.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\FileNameNotAllowed' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/FileNameNotAllowed.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\FileUnacceptableForCollection' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/FileUnacceptableForCollection.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\FunctionalityNotAvailable' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/FunctionalityNotAvailable.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\InvalidBase64Data' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/InvalidBase64Data.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\InvalidConversion' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/InvalidConversion.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\InvalidFileRemover' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/InvalidFileRemover.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\InvalidPathGenerator' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/InvalidPathGenerator.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\InvalidUrl' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/InvalidUrl.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\InvalidUrlGenerator' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/InvalidUrlGenerator.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\MediaCannotBeDeleted' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/MediaCannotBeDeleted.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\MediaCannotBeUpdated' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/MediaCannotBeUpdated.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\MimeTypeNotAllowed' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/MimeTypeNotAllowed.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\RequestDoesNotHaveFile' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/RequestDoesNotHaveFile.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\UnknownType' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/UnknownType.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Exceptions\\UnreachableUrl' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Exceptions/UnreachableUrl.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\File' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/File.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\FileAdder' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/FileAdder.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\FileAdderFactory' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/FileAdderFactory.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Filesystem' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Filesystem.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\HtmlableMedia' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/HtmlableMedia.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\MediaCollection' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/MediaCollection.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\MediaRepository' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/MediaRepository.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Models\\Collections\\MediaCollection' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Models/Collections/MediaCollection.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Models\\Concerns\\CustomMediaProperties' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Models/Concerns/CustomMediaProperties.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Models\\Concerns\\HasUuid' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Models/Concerns/HasUuid.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Models\\Concerns\\IsSorted' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Models/Concerns/IsSorted.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Models\\Media' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Models/Media.php',
+        'Spatie\\MediaLibrary\\MediaCollections\\Models\\Observers\\MediaObserver' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaCollections/Models/Observers/MediaObserver.php',
+        'Spatie\\MediaLibrary\\MediaLibraryServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/MediaLibraryServiceProvider.php',
+        'Spatie\\MediaLibrary\\ResponsiveImages\\Events\\ResponsiveImagesGeneratedEvent' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/ResponsiveImages/Events/ResponsiveImagesGeneratedEvent.php',
+        'Spatie\\MediaLibrary\\ResponsiveImages\\Exceptions\\InvalidTinyJpg' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/ResponsiveImages/Exceptions/InvalidTinyJpg.php',
+        'Spatie\\MediaLibrary\\ResponsiveImages\\Jobs\\GenerateResponsiveImagesJob' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/ResponsiveImages/Jobs/GenerateResponsiveImagesJob.php',
+        'Spatie\\MediaLibrary\\ResponsiveImages\\RegisteredResponsiveImages' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/ResponsiveImages/RegisteredResponsiveImages.php',
+        'Spatie\\MediaLibrary\\ResponsiveImages\\ResponsiveImage' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/ResponsiveImages/ResponsiveImage.php',
+        'Spatie\\MediaLibrary\\ResponsiveImages\\ResponsiveImageGenerator' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/ResponsiveImages/ResponsiveImageGenerator.php',
+        'Spatie\\MediaLibrary\\ResponsiveImages\\TinyPlaceholderGenerator\\Blurred' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/ResponsiveImages/TinyPlaceholderGenerator/Blurred.php',
+        'Spatie\\MediaLibrary\\ResponsiveImages\\TinyPlaceholderGenerator\\TinyPlaceholderGenerator' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/ResponsiveImages/TinyPlaceholderGenerator/TinyPlaceholderGenerator.php',
+        'Spatie\\MediaLibrary\\ResponsiveImages\\WidthCalculator\\FileSizeOptimizedWidthCalculator' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/ResponsiveImages/WidthCalculator/FileSizeOptimizedWidthCalculator.php',
+        'Spatie\\MediaLibrary\\ResponsiveImages\\WidthCalculator\\WidthCalculator' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/ResponsiveImages/WidthCalculator/WidthCalculator.php',
+        'Spatie\\MediaLibrary\\Support\\Factories\\TemporaryUploadFactory' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/Factories/TemporaryUploadFactory.php',
+        'Spatie\\MediaLibrary\\Support\\File' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/File.php',
+        'Spatie\\MediaLibrary\\Support\\FileNamer\\DefaultFileNamer' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/FileNamer/DefaultFileNamer.php',
+        'Spatie\\MediaLibrary\\Support\\FileNamer\\FileNamer' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/FileNamer/FileNamer.php',
+        'Spatie\\MediaLibrary\\Support\\FileRemover\\DefaultFileRemover' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/FileRemover/DefaultFileRemover.php',
+        'Spatie\\MediaLibrary\\Support\\FileRemover\\FileBaseFileRemover' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/FileRemover/FileBaseFileRemover.php',
+        'Spatie\\MediaLibrary\\Support\\FileRemover\\FileRemover' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/FileRemover/FileRemover.php',
+        'Spatie\\MediaLibrary\\Support\\FileRemover\\FileRemoverFactory' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/FileRemover/FileRemoverFactory.php',
+        'Spatie\\MediaLibrary\\Support\\ImageFactory' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/ImageFactory.php',
+        'Spatie\\MediaLibrary\\Support\\MediaLibraryPro' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/MediaLibraryPro.php',
+        'Spatie\\MediaLibrary\\Support\\MediaStream' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/MediaStream.php',
+        'Spatie\\MediaLibrary\\Support\\PathGenerator\\DefaultPathGenerator' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/PathGenerator/DefaultPathGenerator.php',
+        'Spatie\\MediaLibrary\\Support\\PathGenerator\\PathGenerator' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/PathGenerator/PathGenerator.php',
+        'Spatie\\MediaLibrary\\Support\\PathGenerator\\PathGeneratorFactory' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/PathGenerator/PathGeneratorFactory.php',
+        'Spatie\\MediaLibrary\\Support\\RemoteFile' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/RemoteFile.php',
+        'Spatie\\MediaLibrary\\Support\\TemporaryDirectory' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/TemporaryDirectory.php',
+        'Spatie\\MediaLibrary\\Support\\UrlGenerator\\BaseUrlGenerator' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/UrlGenerator/BaseUrlGenerator.php',
+        'Spatie\\MediaLibrary\\Support\\UrlGenerator\\DefaultUrlGenerator' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/UrlGenerator/DefaultUrlGenerator.php',
+        'Spatie\\MediaLibrary\\Support\\UrlGenerator\\UrlGenerator' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/UrlGenerator/UrlGenerator.php',
+        'Spatie\\MediaLibrary\\Support\\UrlGenerator\\UrlGeneratorFactory' => __DIR__ . '/..' . '/spatie/laravel-medialibrary/src/Support/UrlGenerator/UrlGeneratorFactory.php',
+        'Spatie\\TemporaryDirectory\\Exceptions\\InvalidDirectoryName' => __DIR__ . '/..' . '/spatie/temporary-directory/src/Exceptions/InvalidDirectoryName.php',
+        'Spatie\\TemporaryDirectory\\Exceptions\\PathAlreadyExists' => __DIR__ . '/..' . '/spatie/temporary-directory/src/Exceptions/PathAlreadyExists.php',
+        'Spatie\\TemporaryDirectory\\TemporaryDirectory' => __DIR__ . '/..' . '/spatie/temporary-directory/src/TemporaryDirectory.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Component\\Clock\\Clock' => __DIR__ . '/..' . '/symfony/clock/Clock.php',
         'Symfony\\Component\\Clock\\ClockAwareTrait' => __DIR__ . '/..' . '/symfony/clock/ClockAwareTrait.php',
@@ -7679,7 +7969,6 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'Symfony\\Component\\Translation\\StaticMessage' => __DIR__ . '/..' . '/symfony/translation/StaticMessage.php',
         'Symfony\\Component\\Translation\\Test\\AbstractProviderFactoryTestCase' => __DIR__ . '/..' . '/symfony/translation/Test/AbstractProviderFactoryTestCase.php',
         'Symfony\\Component\\Translation\\Test\\IncompleteDsnTestTrait' => __DIR__ . '/..' . '/symfony/translation/Test/IncompleteDsnTestTrait.php',
-        'Symfony\\Component\\Translation\\Test\\ProviderFactoryTestCase' => __DIR__ . '/..' . '/symfony/translation/Test/ProviderFactoryTestCase.php',
         'Symfony\\Component\\Translation\\Test\\ProviderTestCase' => __DIR__ . '/..' . '/symfony/translation/Test/ProviderTestCase.php',
         'Symfony\\Component\\Translation\\TranslatableMessage' => __DIR__ . '/..' . '/symfony/translation/TranslatableMessage.php',
         'Symfony\\Component\\Translation\\Translator' => __DIR__ . '/..' . '/symfony/translation/Translator.php',
@@ -7908,6 +8197,34 @@ class ComposerStaticInit8e121cfec4f9e137f13f96f56fef7523
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+        'ZipStream\\CentralDirectoryFileHeader' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/CentralDirectoryFileHeader.php',
+        'ZipStream\\CompressionMethod' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/CompressionMethod.php',
+        'ZipStream\\DataDescriptor' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/DataDescriptor.php',
+        'ZipStream\\EndOfCentralDirectory' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/EndOfCentralDirectory.php',
+        'ZipStream\\Exception' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception.php',
+        'ZipStream\\Exception\\DosTimeOverflowException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/DosTimeOverflowException.php',
+        'ZipStream\\Exception\\FileNotFoundException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/FileNotFoundException.php',
+        'ZipStream\\Exception\\FileNotReadableException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/FileNotReadableException.php',
+        'ZipStream\\Exception\\FileSizeIncorrectException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/FileSizeIncorrectException.php',
+        'ZipStream\\Exception\\OverflowException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/OverflowException.php',
+        'ZipStream\\Exception\\ResourceActionException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/ResourceActionException.php',
+        'ZipStream\\Exception\\SimulationFileUnknownException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/SimulationFileUnknownException.php',
+        'ZipStream\\Exception\\StreamNotReadableException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/StreamNotReadableException.php',
+        'ZipStream\\Exception\\StreamNotSeekableException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/StreamNotSeekableException.php',
+        'ZipStream\\File' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/File.php',
+        'ZipStream\\GeneralPurposeBitFlag' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/GeneralPurposeBitFlag.php',
+        'ZipStream\\LocalFileHeader' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/LocalFileHeader.php',
+        'ZipStream\\OperationMode' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/OperationMode.php',
+        'ZipStream\\PackField' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/PackField.php',
+        'ZipStream\\Stream\\CallbackStreamWrapper' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Stream/CallbackStreamWrapper.php',
+        'ZipStream\\Time' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Time.php',
+        'ZipStream\\Version' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Version.php',
+        'ZipStream\\Zip64\\DataDescriptor' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Zip64/DataDescriptor.php',
+        'ZipStream\\Zip64\\EndOfCentralDirectory' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Zip64/EndOfCentralDirectory.php',
+        'ZipStream\\Zip64\\EndOfCentralDirectoryLocator' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Zip64/EndOfCentralDirectoryLocator.php',
+        'ZipStream\\Zip64\\ExtendedInformationExtraField' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Zip64/ExtendedInformationExtraField.php',
+        'ZipStream\\ZipStream' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/ZipStream.php',
+        'ZipStream\\Zs\\ExtendedInformationExtraField' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Zs/ExtendedInformationExtraField.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
         'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',
