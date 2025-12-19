@@ -45,6 +45,36 @@
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-white shadow-sm" x-data="{ mobileMenuOpen: false }">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <?php
+                $getUrl = function ($item) {
+                    if ($item instanceof \App\Models\Page) {
+                        return $item->is_homepage ? '/' : '/' . $item->slug;
+                    } elseif ($item instanceof \App\Models\Project) {
+                        return '/projects/' . $item->slug;
+                    } elseif ($item instanceof \App\Models\Blog) {
+                        return '/blogs/' . $item->slug;
+                    } elseif ($item instanceof \App\Models\Service) {
+                        return '/services/' . $item->slug;
+                    } elseif ($item instanceof \App\Models\Event) {
+                        return '/events/' . $item->slug;
+                    } elseif ($item instanceof \App\Models\Menu) {
+                        $url = $item->url;
+                        if ($item->type === 'page' && $item->page) {
+                            $url = $item->page->is_homepage ? '/' : '/' . $item->page->slug;
+                        }
+                        return $url;
+                    }
+                    return '#';
+                };
+
+                $checkActive = function ($url) {
+                    if ($url === '/') {
+                        return request()->is('/');
+                    }
+                    return request()->is(trim($url, '/') . '*');
+                };
+            ?>
+
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <a href="/" class="text-xl font-bold text-primary">
@@ -57,17 +87,26 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <?php $__currentLoopData = $navigation_menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php
-                            $url = $menu->url;
-                            if ($menu->type === 'page' && $menu->page) {
-                                $url = $menu->page->is_homepage ? '/' : '/' . $menu->page->slug;
-                            }
+                            $url = $getUrl($menu);
                             $hasChildren = $menu->has_children;
+                            $isActive = $checkActive($url);
+
+                            $childItems = $hasChildren ? $menu->getChildItems() : [];
+                            if ($hasChildren && !$isActive && $menu->child_type !== 'pages') {
+                                foreach ($childItems as $child) {
+                                    if ($checkActive($getUrl($child))) {
+                                        $isActive = true;
+                                        break;
+                                    }
+                                }
+                            }
                         ?>
 
                         <?php if($hasChildren): ?>
                             <div class="relative group" x-data="{ open: false }" @mouseenter="open = true"
                                 @mouseleave="open = false">
-                                <button class="flex items-center text-gray-900 hover:text-primary transition py-2">
+                                <button
+                                    class="flex items-center transition py-2 <?php echo e($isActive ? 'text-primary font-medium' : 'text-gray-900 hover:text-primary'); ?>">
                                     <?php echo e($menu->title); ?>
 
                                     <i data-feather="chevron-down" class="w-4 h-4 ml-1"></i>
@@ -76,28 +115,13 @@
                                     x-transition:enter-start="opacity-0 translate-y-1"
                                     x-transition:enter-end="opacity-100 translate-y-0"
                                     class="absolute left-0 mt-0 w-48 bg-white border border-gray-100 shadow-lg rounded-md overflow-hidden z-50">
-                                    <?php $__currentLoopData = $menu->getChildItems(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $child): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php $__currentLoopData = $childItems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $child): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <?php
-                                            $childUrl = '#';
-                                            if ($child instanceof \App\Models\Page) {
-                                                $childUrl = $child->is_homepage ? '/' : '/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Project) {
-                                                $childUrl = '/projects/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Blog) {
-                                                $childUrl = '/blogs/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Service) {
-                                                $childUrl = '/services/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Event) {
-                                                $childUrl = '/events/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Menu) {
-                                                $childUrl = $child->url;
-                                                if ($child->type === 'page' && $child->page) {
-                                                    $childUrl = $child->page->is_homepage ? '/' : '/' . $child->page->slug;
-                                                }
-                                            }
+                                            $childUrl = $getUrl($child);
+                                            $isChildActive = $checkActive($childUrl);
                                         ?>
                                         <a href="<?php echo e($childUrl); ?>"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">
+                                            class="block px-4 py-2 text-sm transition <?php echo e($isChildActive ? 'text-primary bg-gray-50 font-medium' : 'text-gray-700 hover:bg-gray-50 hover:text-primary'); ?>">
                                             <?php echo e($child->title); ?>
 
                                         </a>
@@ -105,12 +129,8 @@
                                 </div>
                             </div>
                         <?php else: ?>
-                            <?php if($loop->last): ?>
-                                <a href="<?php echo e($url); ?>"
-                                    class="px-4 py-2 rounded-md bg-primary text-white hover:bg-opacity-90 transition"><?php echo e($menu->title); ?></a>
-                            <?php else: ?>
-                                <a href="<?php echo e($url); ?>" class="text-gray-900 hover:text-primary transition"><?php echo e($menu->title); ?></a>
-                            <?php endif; ?>
+                            <a href="<?php echo e($url); ?>"
+                                class="transition <?php echo e($isActive ? 'text-primary font-medium' : 'text-gray-900 hover:text-primary'); ?>"><?php echo e($menu->title); ?></a>
                         <?php endif; ?>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
@@ -127,47 +147,41 @@
             <!-- Mobile Menu -->
             <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
                 x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
-                class="md:hidden pb-4">
+                class="md:hidden pb-4" x-cloak>
                 <div class="flex flex-col space-y-2">
                     <?php $__currentLoopData = $navigation_menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php
-                            $url = $menu->url;
-                            if ($menu->type === 'page' && $menu->page) {
-                                $url = $menu->page->is_homepage ? '/' : '/' . $menu->page->slug;
-                            }
+                            $url = $getUrl($menu);
                             $hasChildren = $menu->has_children;
+                            $isActive = $checkActive($url);
+
+                            $childItems = $hasChildren ? $menu->getChildItems() : [];
+                            if ($hasChildren && !$isActive && $menu->child_type !== 'pages') {
+                                foreach ($childItems as $child) {
+                                    if ($checkActive($getUrl($child))) {
+                                        $isActive = true;
+                                        break;
+                                    }
+                                }
+                            }
                         ?>
 
                         <?php if($hasChildren): ?>
-                            <div x-data="{ open: false }">
+                            <div x-data="{ open: <?php echo e($isActive ? 'true' : 'false'); ?> }">
                                 <button @click="open = !open"
-                                    class="flex items-center justify-between w-full text-gray-900 hover:text-primary transition py-2">
+                                    class="flex items-center justify-between w-full transition py-2 <?php echo e($isActive ? 'text-primary font-medium' : 'text-gray-900 hover:text-primary'); ?>">
                                     <span><?php echo e($menu->title); ?></span>
                                     <i data-feather="chevron-down" class="w-4 h-4 transition-transform"
                                         :class="{'rotate-180': open}"></i>
                                 </button>
                                 <div x-show="open" class="pl-4 space-y-2 border-l border-gray-100 ml-1">
-                                    <?php $__currentLoopData = $menu->getChildItems(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $child): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php $__currentLoopData = $childItems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $child): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <?php
-                                            $childUrl = '#';
-                                            if ($child instanceof \App\Models\Page) {
-                                                $childUrl = $child->is_homepage ? '/' : '/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Project) {
-                                                $childUrl = '/projects/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Blog) {
-                                                $childUrl = '/blogs/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Service) {
-                                                $childUrl = '/services/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Event) {
-                                                $childUrl = '/events/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Menu) {
-                                                $childUrl = $child->url;
-                                                if ($child->type === 'page' && $child->page) {
-                                                    $childUrl = $child->page->is_homepage ? '/' : '/' . $child->page->slug;
-                                                }
-                                            }
+                                            $childUrl = $getUrl($child);
+                                            $isChildActive = $checkActive($childUrl);
                                         ?>
-                                        <a href="<?php echo e($childUrl); ?>" class="block py-2 text-sm text-gray-600 hover:text-primary">
+                                        <a href="<?php echo e($childUrl); ?>"
+                                            class="block py-2 text-sm transition <?php echo e($isChildActive ? 'text-primary font-medium' : 'text-gray-600 hover:text-primary'); ?>">
                                             <?php echo e($child->title); ?>
 
                                         </a>
@@ -175,7 +189,8 @@
                                 </div>
                             </div>
                         <?php else: ?>
-                            <a href="<?php echo e($url); ?>" class="block py-2 text-gray-900 hover:text-primary transition">
+                            <a href="<?php echo e($url); ?>"
+                                class="block py-2 transition <?php echo e($isActive ? 'text-primary font-medium' : 'text-gray-900 hover:text-primary'); ?>">
                                 <?php echo e($menu->title); ?>
 
                             </a>
@@ -280,5 +295,4 @@
     </script>
 </body>
 
-</html>
-<?php /**PATH /home/ongudidan/Projects/vue-cms/resources/js/themes/modern/layout.blade.php ENDPATH**/ ?>
+</html><?php /**PATH /home/ongudidan/Projects/vue-cms/resources/js/themes/modern/layout.blade.php ENDPATH**/ ?>

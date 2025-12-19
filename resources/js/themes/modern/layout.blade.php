@@ -45,6 +45,36 @@
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-white shadow-sm" x-data="{ mobileMenuOpen: false }">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            @php
+                $getUrl = function ($item) {
+                    if ($item instanceof \App\Models\Page) {
+                        return $item->is_homepage ? '/' : '/' . $item->slug;
+                    } elseif ($item instanceof \App\Models\Project) {
+                        return '/projects/' . $item->slug;
+                    } elseif ($item instanceof \App\Models\Blog) {
+                        return '/blogs/' . $item->slug;
+                    } elseif ($item instanceof \App\Models\Service) {
+                        return '/services/' . $item->slug;
+                    } elseif ($item instanceof \App\Models\Event) {
+                        return '/events/' . $item->slug;
+                    } elseif ($item instanceof \App\Models\Menu) {
+                        $url = $item->url;
+                        if ($item->type === 'page' && $item->page) {
+                            $url = $item->page->is_homepage ? '/' : '/' . $item->page->slug;
+                        }
+                        return $url;
+                    }
+                    return '#';
+                };
+
+                $checkActive = function ($url) {
+                    if ($url === '/') {
+                        return request()->is('/');
+                    }
+                    return request()->is(trim($url, '/') . '*');
+                };
+            @endphp
+
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <a href="/" class="text-xl font-bold text-primary">
@@ -56,17 +86,26 @@
                 <div class="hidden md:flex items-center space-x-8">
                     @foreach($navigation_menus as $menu)
                         @php
-                            $url = $menu->url;
-                            if ($menu->type === 'page' && $menu->page) {
-                                $url = $menu->page->is_homepage ? '/' : '/' . $menu->page->slug;
-                            }
+                            $url = $getUrl($menu);
                             $hasChildren = $menu->has_children;
+                            $isActive = $checkActive($url);
+
+                            $childItems = $hasChildren ? $menu->getChildItems() : [];
+                            if ($hasChildren && !$isActive && $menu->child_type !== 'pages') {
+                                foreach ($childItems as $child) {
+                                    if ($checkActive($getUrl($child))) {
+                                        $isActive = true;
+                                        break;
+                                    }
+                                }
+                            }
                         @endphp
 
                         @if($hasChildren)
                             <div class="relative group" x-data="{ open: false }" @mouseenter="open = true"
                                 @mouseleave="open = false">
-                                <button class="flex items-center text-gray-900 hover:text-primary transition py-2">
+                                <button
+                                    class="flex items-center transition py-2 {{ $isActive ? 'text-primary font-medium' : 'text-gray-900 hover:text-primary' }}">
                                     {{ $menu->title }}
                                     <i data-feather="chevron-down" class="w-4 h-4 ml-1"></i>
                                 </button>
@@ -74,40 +113,21 @@
                                     x-transition:enter-start="opacity-0 translate-y-1"
                                     x-transition:enter-end="opacity-100 translate-y-0"
                                     class="absolute left-0 mt-0 w-48 bg-white border border-gray-100 shadow-lg rounded-md overflow-hidden z-50">
-                                    @foreach($menu->getChildItems() as $child)
+                                    @foreach($childItems as $child)
                                         @php
-                                            $childUrl = '#';
-                                            if ($child instanceof \App\Models\Page) {
-                                                $childUrl = $child->is_homepage ? '/' : '/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Project) {
-                                                $childUrl = '/projects/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Blog) {
-                                                $childUrl = '/blogs/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Service) {
-                                                $childUrl = '/services/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Event) {
-                                                $childUrl = '/events/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Menu) {
-                                                $childUrl = $child->url;
-                                                if ($child->type === 'page' && $child->page) {
-                                                    $childUrl = $child->page->is_homepage ? '/' : '/' . $child->page->slug;
-                                                }
-                                            }
+                                            $childUrl = $getUrl($child);
+                                            $isChildActive = $checkActive($childUrl);
                                         @endphp
                                         <a href="{{ $childUrl }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">
+                                            class="block px-4 py-2 text-sm transition {{ $isChildActive ? 'text-primary bg-gray-50 font-medium' : 'text-gray-700 hover:bg-gray-50 hover:text-primary' }}">
                                             {{ $child->title }}
                                         </a>
                                     @endforeach
                                 </div>
                             </div>
                         @else
-                            @if($loop->last)
-                                <a href="{{ $url }}"
-                                    class="px-4 py-2 rounded-md bg-primary text-white hover:bg-opacity-90 transition">{{ $menu->title }}</a>
-                            @else
-                                <a href="{{ $url }}" class="text-gray-900 hover:text-primary transition">{{ $menu->title }}</a>
-                            @endif
+                            <a href="{{ $url }}"
+                                class="transition {{ $isActive ? 'text-primary font-medium' : 'text-gray-900 hover:text-primary' }}">{{ $menu->title }}</a>
                         @endif
                     @endforeach
                 </div>
@@ -124,54 +144,49 @@
             <!-- Mobile Menu -->
             <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
                 x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
-                class="md:hidden pb-4">
+                class="md:hidden pb-4" x-cloak>
                 <div class="flex flex-col space-y-2">
                     @foreach($navigation_menus as $menu)
                         @php
-                            $url = $menu->url;
-                            if ($menu->type === 'page' && $menu->page) {
-                                $url = $menu->page->is_homepage ? '/' : '/' . $menu->page->slug;
-                            }
+                            $url = $getUrl($menu);
                             $hasChildren = $menu->has_children;
+                            $isActive = $checkActive($url);
+
+                            $childItems = $hasChildren ? $menu->getChildItems() : [];
+                            if ($hasChildren && !$isActive && $menu->child_type !== 'pages') {
+                                foreach ($childItems as $child) {
+                                    if ($checkActive($getUrl($child))) {
+                                        $isActive = true;
+                                        break;
+                                    }
+                                }
+                            }
                         @endphp
 
                         @if($hasChildren)
-                            <div x-data="{ open: false }">
+                            <div x-data="{ open: {{ $isActive ? 'true' : 'false' }} }">
                                 <button @click="open = !open"
-                                    class="flex items-center justify-between w-full text-gray-900 hover:text-primary transition py-2">
+                                    class="flex items-center justify-between w-full transition py-2 {{ $isActive ? 'text-primary font-medium' : 'text-gray-900 hover:text-primary' }}">
                                     <span>{{ $menu->title }}</span>
                                     <i data-feather="chevron-down" class="w-4 h-4 transition-transform"
                                         :class="{'rotate-180': open}"></i>
                                 </button>
                                 <div x-show="open" class="pl-4 space-y-2 border-l border-gray-100 ml-1">
-                                    @foreach($menu->getChildItems() as $child)
+                                    @foreach($childItems as $child)
                                         @php
-                                            $childUrl = '#';
-                                            if ($child instanceof \App\Models\Page) {
-                                                $childUrl = $child->is_homepage ? '/' : '/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Project) {
-                                                $childUrl = '/projects/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Blog) {
-                                                $childUrl = '/blogs/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Service) {
-                                                $childUrl = '/services/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Event) {
-                                                $childUrl = '/events/' . $child->slug;
-                                            } elseif ($child instanceof \App\Models\Menu) {
-                                                $childUrl = $child->url;
-                                                if ($child->type === 'page' && $child->page) {
-                                                    $childUrl = $child->page->is_homepage ? '/' : '/' . $child->page->slug;
-                                                }
-                                            }
+                                            $childUrl = $getUrl($child);
+                                            $isChildActive = $checkActive($childUrl);
                                         @endphp
-                                        <a href="{{ $childUrl }}" class="block py-2 text-sm text-gray-600 hover:text-primary">
+                                        <a href="{{ $childUrl }}"
+                                            class="block py-2 text-sm transition {{ $isChildActive ? 'text-primary font-medium' : 'text-gray-600 hover:text-primary' }}">
                                             {{ $child->title }}
                                         </a>
                                     @endforeach
                                 </div>
                             </div>
                         @else
-                            <a href="{{ $url }}" class="block py-2 text-gray-900 hover:text-primary transition">
+                            <a href="{{ $url }}"
+                                class="block py-2 transition {{ $isActive ? 'text-primary font-medium' : 'text-gray-900 hover:text-primary' }}">
                                 {{ $menu->title }}
                             </a>
                         @endif
