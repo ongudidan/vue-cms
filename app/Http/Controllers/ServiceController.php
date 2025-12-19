@@ -152,4 +152,44 @@ class ServiceController extends Controller
         return redirect()->route('admin.services.index')
             ->with('success', 'Service deleted successfully.');
     }
+
+    /**
+     * Display the specified service on the frontend.
+     */
+    public function show($slug)
+    {
+        $service = Service::where('slug', $slug)
+            ->where('active', true)
+            ->with('media')
+            ->firstOrFail();
+
+        // Get active theme
+        $theme = \App\Models\Theme::where('is_active', true)->first();
+
+        // Determine which layout to use
+        $layout = 'layouts.app'; // Default Laravel layout
+
+        if ($theme) {
+            // Check if theme has a custom layout
+            $themeLayoutPath = resource_path("js/themes/{$theme->slug}/layout.blade.php");
+            if (file_exists($themeLayoutPath)) {
+                $layout = "themes.{$theme->slug}::layout";
+            }
+        }
+
+        // Determine which template to use
+        $view = 'services.show'; // Default fallback
+        if ($theme) {
+            $themeViewPath = resource_path("js/themes/{$theme->slug}/components/services/show.blade.php");
+            if (file_exists($themeViewPath)) {
+                $view = "themes.{$theme->slug}::components.services.show";
+            }
+        }
+
+        return view($view, [
+            'service' => $service,
+            'layout' => $layout,
+            'theme' => $theme,
+        ]);
+    }
 }

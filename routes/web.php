@@ -108,6 +108,9 @@ require __DIR__ . '/settings.php';
 
 
 // Public page routes
-
+Route::get('/blogs/{slug}', [\App\Http\Controllers\BlogController::class, 'show'])->name('blogs.show');
+Route::get('/services/{slug}', [\App\Http\Controllers\ServiceController::class, 'show'])->name('services.show');
+Route::get('/projects/{slug}', [\App\Http\Controllers\ProjectController::class, 'show'])->name('projects.show');
+Route::get('/events/{slug}', [\App\Http\Controllers\EventController::class, 'show'])->name('events.show');
 Route::get('/{slug}', [\App\Http\Controllers\PageController::class, 'show'])->name('page.show');
 Route::get('/', [\App\Http\Controllers\PageController::class, 'showHomepage'])->name('home');

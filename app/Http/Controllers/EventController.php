@@ -173,4 +173,44 @@ class EventController extends Controller
         return redirect()->route('admin.Events.index')
             ->with('success', 'Event deleted successfully.');
     }
+
+    /**
+     * Display the specified event on the frontend.
+     */
+    public function show($slug)
+    {
+        $event = Event::where('slug', $slug)
+            ->where('active', true)
+            ->with('media')
+            ->firstOrFail();
+
+        // Get active theme
+        $theme = \App\Models\Theme::where('is_active', true)->first();
+
+        // Determine which layout to use
+        $layout = 'layouts.app'; // Default Laravel layout
+
+        if ($theme) {
+            // Check if theme has a custom layout
+            $themeLayoutPath = resource_path("js/themes/{$theme->slug}/layout.blade.php");
+            if (file_exists($themeLayoutPath)) {
+                $layout = "themes.{$theme->slug}::layout";
+            }
+        }
+
+        // Determine which template to use
+        $view = 'events.show'; // Default fallback
+        if ($theme) {
+            $themeViewPath = resource_path("js/themes/{$theme->slug}/components/events/show.blade.php");
+            if (file_exists($themeViewPath)) {
+                $view = "themes.{$theme->slug}::components.events.show";
+            }
+        }
+
+        return view($view, [
+            'event' => $event,
+            'layout' => $layout,
+            'theme' => $theme,
+        ]);
+    }
 }

@@ -163,4 +163,44 @@ class BlogController extends Controller
         return redirect()->route('admin.blogs.index')
             ->with('success', 'Blog deleted successfully.');
     }
+
+    /**
+     * Display the specified blog on the frontend.
+     */
+    public function show($slug)
+    {
+        $blog = Blog::where('slug', $slug)
+            ->where('active', true)
+            ->with('user', 'media')
+            ->firstOrFail();
+
+        // Get active theme
+        $theme = \App\Models\Theme::where('is_active', true)->first();
+
+        // Determine which layout to use
+        $layout = 'layouts.app'; // Default Laravel layout
+
+        if ($theme) {
+            // Check if theme has a custom layout
+            $themeLayoutPath = resource_path("js/themes/{$theme->slug}/layout.blade.php");
+            if (file_exists($themeLayoutPath)) {
+                $layout = "themes.{$theme->slug}::layout";
+            }
+        }
+
+        // Determine which template to use
+        $view = 'blogs.show'; // Default fallback
+        if ($theme) {
+            $themeViewPath = resource_path("js/themes/{$theme->slug}/components/blogs/show.blade.php");
+            if (file_exists($themeViewPath)) {
+                $view = "themes.{$theme->slug}::components.blogs.show";
+            }
+        }
+
+        return view($view, [
+            'blog' => $blog,
+            'layout' => $layout,
+            'theme' => $theme,
+        ]);
+    }
 }

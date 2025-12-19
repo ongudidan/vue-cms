@@ -167,4 +167,44 @@ class ProjectController extends Controller
         return redirect()->route('admin.projects.index')
             ->with('success', 'Project deleted successfully.');
     }
+
+    /**
+     * Display the specified project on the frontend.
+     */
+    public function show($slug)
+    {
+        $project = Project::where('slug', $slug)
+            ->where('active', true)
+            ->with('media')
+            ->firstOrFail();
+
+        // Get active theme
+        $theme = \App\Models\Theme::where('is_active', true)->first();
+
+        // Determine which layout to use
+        $layout = 'layouts.app'; // Default Laravel layout
+
+        if ($theme) {
+            // Check if theme has a custom layout
+            $themeLayoutPath = resource_path("js/themes/{$theme->slug}/layout.blade.php");
+            if (file_exists($themeLayoutPath)) {
+                $layout = "themes.{$theme->slug}::layout";
+            }
+        }
+
+        // Determine which template to use
+        $view = 'projects.show'; // Default fallback
+        if ($theme) {
+            $themeViewPath = resource_path("js/themes/{$theme->slug}/components/projects/show.blade.php");
+            if (file_exists($themeViewPath)) {
+                $view = "themes.{$theme->slug}::components.projects.show";
+            }
+        }
+
+        return view($view, [
+            'project' => $project,
+            'layout' => $layout,
+            'theme' => $theme,
+        ]);
+    }
 }
